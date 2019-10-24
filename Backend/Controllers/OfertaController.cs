@@ -53,9 +53,13 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Oferta>> Post(Oferta oferta)
         {
+        
             try
             {
-                oferta.ImagemProduto = ();//inserir script de upload de imagem
+                UploadController upload =  new UploadController();
+                oferta.ImagemProduto = upload.Upload();
+                
+            
                 await _context.AddAsync(oferta);
                 await _context.SaveChangesAsync();
             }
@@ -65,6 +69,7 @@ namespace Backend.Controllers
             }
             return oferta;
         }
+        
         /// <summary>
         /// Atualiza dados em Tipo Usuario
         /// </summary>
