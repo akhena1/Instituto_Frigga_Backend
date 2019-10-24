@@ -20,17 +20,17 @@ CREATE TABLE Categoria_receita(
 CREATE TABLE Usuario(
 	Usuario_id INT IDENTITY PRIMARY KEY NOT NULL,
 	Nome VARCHAR(255),
-	Telefone VARCHAR(15),
+	Telefone VARCHAR(255),
 	Email VARCHAR(255),
 	Biografia VARCHAR(255),
-	Senha VARCHAR(30),
+	Senha VARCHAR(255),
 	Cnpj_cpf VARCHAR(14),
 	Tipo_usuario_id INT FOREIGN KEY REFERENCES Tipo_usuario(Tipo_usuario_id)
 );
 --exe ok
 CREATE TABLE Produto(
 	Produto_id INT IDENTITY PRIMARY KEY NOT NULL,
-	Tipo VARCHAR(100),
+	Tipo VARCHAR(255),
 	Categoria_produto_id INT FOREIGN KEY REFERENCES Categoria_produto(Categoria_produto_id)
 );
 --exe ok
@@ -51,7 +51,7 @@ CREATE TABLE Endereco(
 	Bairro VARCHAR (100),
 	Complemento VARCHAR(255),
 	Cep CHAR(8),
-	Cidade VARCHAR(100),
+	Cidade VARCHAR(255),
 	Usuario_id INT FOREIGN KEY REFERENCES Usuario(Usuario_id)
 );
 --exe ok
