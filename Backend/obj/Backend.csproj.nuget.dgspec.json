@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\Backend.csproj": {}
+    "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\Backend.csproj": {
+    "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\Backend.csproj",
-        "projectName": "Backend",
-        "projectPath": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\backend.csproj",
+        "projectName": "backend",
+        "projectPath": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\backend.csproj",
         "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\obj\\",
         "projectStyle": "PackageReference",
@@ -39,6 +39,10 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -48,6 +52,10 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0-rc4, )"
             }
           },
           "imports": [
