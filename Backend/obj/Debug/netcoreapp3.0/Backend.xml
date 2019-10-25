@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Backend</name>
+    </assembly>
+    <members>
+        <member name="M:Backend.Controllers.CategoriaProdutoController.Get">
+            <summary>
+            Mostra lista de tipos de usuários
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.CategoriaProdutoController.Get(System.Int32)">
+            <summary>
+            Mostra tipo de usuário por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.CategoriaProdutoController.Post(Backend.Models.CategoriaProduto)">
+            <summary>
+            Insere dados em CategoriaProduto
+            </summary>
+            <param name="categoriaProduto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.CategoriaProdutoController.Put(System.Int32,Backend.Models.CategoriaProduto)">
+            <summary>
+            Atualiza dados em Tipo Usuario
+            </summary>
+            <param name="id"></param>
+            <param name="categoriaProduto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.CategoriaProdutoController.Delete(System.Int32)">
+            <summary>
+            Deleta dados em Tipo usuario
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.CategoriaReceitaController.Get">
+            <summary>
+            Mostra lista de tipos de usuários
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.CategoriaReceitaController.Get(System.Int32)">
+            <summary>
+            Mostra tipo de usuário por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.CategoriaReceitaController.Post(Backend.Models.CategoriaReceita)">
+            <summary>
+            Insere dados em CategoriaReceita
+            </summary>
+            <param name="categoriaReceita"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.CategoriaReceitaController.Put(System.Int32,Backend.Models.CategoriaReceita)">
+            <summary>
+            Atualiza dados em Tipo Usuario
+            </summary>
+            <param name="id"></param>
+            <param name="categoriaReceita"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.CategoriaReceitaController.Delete(System.Int32)">
+            <summary>
+            Deleta dados em Tipo usuario
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.EnderecoController.Get">
+            <summary>
+            Mostra lista de tipos de usuários
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.EnderecoController.Get(System.Int32)">
+            <summary>
+            Mostra tipo de usuário por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.EnderecoController.Post(Backend.Models.Endereco)">
+            <summary>
+            Insere dados em Endereco
+            </summary>
+            <param name="endereco"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.EnderecoController.Put(System.Int32,Backend.Models.Endereco)">
+            <summary>
+            Atualiza dados em Tipo Usuario
+            </summary>
+            <param name="id"></param>
+            <param name="endereco"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.EnderecoController.Delete(System.Int32)">
+            <summary>
+            Deleta dados em Tipo usuario
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.OfertaController.Get">
+            <summary>
+            Mostra lista de tipos de usuários
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.OfertaController.Get(System.Int32)">
+            <summary>
+            Mostra tipo de usuário por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.OfertaController.Post(Backend.Models.Oferta)">
+            <summary>
+            Insere dados em Oferta
+            </summary>
+            <param name="oferta"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.OfertaController.Put(System.Int32,Backend.Models.Oferta)">
+            <summary>
+            Atualiza dados em Tipo Usuario
+            </summary>
+            <param name="id"></param>
+            <param name="oferta"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.OfertaController.Delete(System.Int32)">
+            <summary>
+            Deleta dados em Tipo usuario
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.ProdutoController.Get">
+            <summary>
+            Mostra lista de tipos de usuários
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.ProdutoController.Get(System.Int32)">
+            <summary>
+            Mostra tipo de usuário por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.ProdutoController.Post(Backend.Models.Produto)">
+            <summary>
+            Insere dados em Produto
+            </summary>
+            <param name="produto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.ProdutoController.Put(System.Int32,Backend.Models.Produto)">
+            <summary>
+            Atualiza dados em Tipo Usuario
+            </summary>
+            <param name="id"></param>
+            <param name="produto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.ProdutoController.Delete(System.Int32)">
+            <summary>
+            Deleta dados em Tipo usuario
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.ReceitaController.Get">
+            <summary>
+            Mostra lista de tipos de usuários
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.ReceitaController.Get(System.Int32)">
+            <summary>
+            Mostra tipo de usuário por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.ReceitaController.Post(Backend.Models.Receita)">
+            <summary>
+            Insere dados em Receita
+            </summary>
+            <param name="receita"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.ReceitaController.Put(System.Int32,Backend.Models.Receita)">
+            <summary>
+            Atualiza dados em Tipo Usuario
+            </summary>
+            <param name="id"></param>
+            <param name="receita"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.ReceitaController.Delete(System.Int32)">
+            <summary>
+            Deleta dados em Tipo usuario
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.TipoUsuarioController.Get">
+            <summary>
+            Mostra lista de tipos de usuários
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.TipoUsuarioController.Get(System.Int32)">
+            <summary>
+            Mostra tipo de usuário por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.TipoUsuarioController.Post(Backend.Models.TipoUsuario)">
+            <summary>
+            Insere dados em TipoUsuario
+            </summary>
+            <param name="tipoUsuario"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.TipoUsuarioController.Put(System.Int32,Backend.Models.TipoUsuario)">
+            <summary>
+            Atualiza dados em Tipo Usuario
+            </summary>
+            <param name="id"></param>
+            <param name="tipoUsuario"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.TipoUsuarioController.Delete(System.Int32)">
+            <summary>
+            Deleta dados em Tipo usuario
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.UsuarioController.Get">
+            <summary>
+            Mostra lista de tipos de usuários
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.UsuarioController.Get(System.Int32)">
+            <summary>
+            Mostra tipo de usuário por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.UsuarioController.Post(Backend.Models.Usuario)">
+            <summary>
+            Insere dados em Usuario
+            </summary>
+            <param name="usuario"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.UsuarioController.Put(System.Int32,Backend.Models.Usuario)">
+            <summary>
+            Atualiza dados em Tipo Usuario
+            </summary>
+            <param name="id"></param>
+            <param name="usuario"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Backend.Controllers.UsuarioController.Delete(System.Int32)">
+            <summary>
+            Deleta dados em Tipo usuario
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

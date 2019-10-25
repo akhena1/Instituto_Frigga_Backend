@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -50,11 +52,30 @@ namespace Backend.Controllers
         /// </summary>
         /// <param name="receita"></param>
         /// <returns></returns>
-        [HttpPost]
-        public async Task<ActionResult<Receita>> Post(Receita receita)
+        [HttpPost , DisableRequestSizeLimit]
+        public async Task<ActionResult<Receita>> Post([FromForm]Receita receita)
         {
             try
             {
+
+                var fileName = "";
+
+                var file = Request.Form.Files[0];
+                var folderName = Path.Combine ("imagens");
+                var pathToSave = Path.Combine (Directory.GetCurrentDirectory (), folderName);
+
+                if (file.Length > 0) {
+                    fileName = ContentDispositionHeaderValue.Parse (file.ContentDisposition).FileName.Trim ('"');
+                    var fullPath = Path.Combine (pathToSave, fileName);
+                    var dbPath = Path.Combine (folderName, fileName);
+
+                    using (var stream = new FileStream (fullPath, FileMode.Create)) {
+                        file.CopyTo (stream);
+                    }
+                }
+
+                receita.ImagemReceita = fileName;
+
                 await _context.AddAsync(receita);
                 await _context.SaveChangesAsync();
             }

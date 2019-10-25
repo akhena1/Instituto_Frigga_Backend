@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -50,16 +52,34 @@ namespace Backend.Controllers
         /// </summary>
         /// <param name="oferta"></param>
         /// <returns></returns>
-        [HttpPost]
-        public async Task<ActionResult<Oferta>> Post(Oferta oferta)
+        [HttpPost, DisableRequestSizeLimit]
+        public async Task<ActionResult<Oferta>> Post([FromForm] Oferta oferta)
         {
         
             try
             {
-                UploadController upload =  new UploadController();
-                oferta.ImagemProduto = upload.Upload();
-                
-            
+
+                var fileName = "";
+
+                var file = Request.Form.Files[0];
+                var folderName = Path.Combine ("imagens");
+                var pathToSave = Path.Combine (Directory.GetCurrentDirectory (), folderName);
+
+                if (file.Length > 0) {
+                    fileName = ContentDispositionHeaderValue.Parse (file.ContentDisposition).FileName.Trim ('"');
+                    var fullPath = Path.Combine (pathToSave, fileName);
+                    var dbPath = Path.Combine (folderName, fileName);
+
+                    using (var stream = new FileStream (fullPath, FileMode.Create)) {
+                        file.CopyTo (stream);
+                    }
+                }
+
+                oferta.ImagemProduto = fileName;
+
+                /* UploadController upload =  new UploadController();
+                oferta.ImagemProduto = upload.Upload(); */
+
                 await _context.AddAsync(oferta);
                 await _context.SaveChangesAsync();
             }
@@ -69,6 +89,9 @@ namespace Backend.Controllers
             }
             return oferta;
         }
+
+        
+        
         
         /// <summary>
         /// Atualiza dados em Tipo Usuario
