@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers
@@ -47,6 +48,24 @@ namespace Backend.Controllers
             }
 
             return oferta;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<Oferta>>> FiltroProduto()
+        {
+            SqlConnection connection = new SqlConnection();
+
+            try
+            {
+                
+            }
+            catch
+            {
+                
+                throw;
+            }
+
+            
         }
         /// <summary>
         /// Insere dados em Oferta
