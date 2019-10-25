@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,6 +54,8 @@ namespace Backend.Controllers
         /// <param name="oferta"></param>
         /// <returns></returns>
         [HttpPost, DisableRequestSizeLimit]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult<Oferta>> Post([FromForm] Oferta oferta)
         {
         
@@ -100,6 +103,8 @@ namespace Backend.Controllers
         /// <param name="oferta"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult> Put(int id , Oferta oferta)
         {
             if (id != oferta.OfertaId)
@@ -136,6 +141,8 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult<Oferta>> Delete(int id)
         {
             var oferta = await _context.Oferta.FindAsync(id);

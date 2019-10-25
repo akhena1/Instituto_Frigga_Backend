@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize (Roles = "1")]
     public class EnderecoController : ControllerBase
     {
         InstitutoFriggaContext _context = new InstitutoFriggaContext();
@@ -34,6 +36,7 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize (Roles = "1")]
         public async Task<ActionResult<Endereco>> Get(int id)
         {
             var endereco = await _context.Endereco.FindAsync(id);
@@ -51,6 +54,9 @@ namespace Backend.Controllers
         /// <param name="endereco"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "2")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult<Endereco>> Post(Endereco endereco)
         {
             try
@@ -71,6 +77,9 @@ namespace Backend.Controllers
         /// <param name="endereco"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "2")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult> Put(int id , Endereco endereco)
         {
             if (id != endereco.EnderecoId)
@@ -107,6 +116,9 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "2")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult<Endereco>> Delete(int id)
         {
             var endereco = await _context.Endereco.FindAsync(id);

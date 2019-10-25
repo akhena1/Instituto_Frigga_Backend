@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,6 +54,9 @@ namespace Backend.Controllers
         /// <param name="receita"></param>
         /// <returns></returns>
         [HttpPost , DisableRequestSizeLimit]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "2")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult<Receita>> Post([FromForm]Receita receita)
         {
             try
@@ -92,6 +96,9 @@ namespace Backend.Controllers
         /// <param name="receita"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "2")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult> Put(int id , Receita receita)
         {
             if (id != receita.ReceitaId)
@@ -128,6 +135,9 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "2")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult<Receita>> Delete(int id)
         {
             var receita = await _context.Receita.FindAsync(id);

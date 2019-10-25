@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,7 @@ namespace Backend.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize (Roles = "1")]
         public async Task<ActionResult<List<Usuario>>> Get()
         {
             var usuario = await _context.Usuario.ToListAsync();
@@ -34,6 +36,7 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize (Roles = "1")]
         public async Task<ActionResult<Usuario>> Get(int id)
         {
             var usuario = await _context.Usuario.FindAsync(id);
@@ -71,6 +74,9 @@ namespace Backend.Controllers
         /// <param name="usuario"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "2")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult> Put(int id , Usuario usuario)
         {
             if (id != usuario.UsuarioId)
@@ -107,6 +113,7 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize (Roles = "1")]
         public async Task<ActionResult<Usuario>> Delete(int id)
         {
             var usuario = await _context.Usuario.FindAsync(id);

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -51,6 +52,7 @@ namespace Backend.Controllers
         /// <param name="tipoUsuario"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize (Roles = "1")]
         public async Task<ActionResult<TipoUsuario>> Post(TipoUsuario tipoUsuario)
         {
             try
@@ -71,6 +73,7 @@ namespace Backend.Controllers
         /// <param name="tipoUsuario"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize (Roles = "1")]
         public async Task<ActionResult> Put(int id , TipoUsuario tipoUsuario)
         {
             if (id != tipoUsuario.TipoUsuarioId)
@@ -107,6 +110,7 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize (Roles = "1")]
         public async Task<ActionResult<TipoUsuario>> Delete(int id)
         {
             var tipoUsuario = await _context.TipoUsuario.FindAsync(id);

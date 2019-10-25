@@ -52,6 +52,8 @@ namespace Backend.Controllers
         /// <param name="produto"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult<Produto>> Post(Produto produto)
         {
             try
@@ -72,6 +74,8 @@ namespace Backend.Controllers
         /// <param name="produto"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult> Put(int id , Produto produto)
         {
             if (id != produto.ProdutoId)
@@ -108,6 +112,8 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize (Roles = "1")]
+        [Authorize (Roles = "3")]
         public async Task<ActionResult<Produto>> Delete(int id)
         {
             var produto = await _context.Produto.FindAsync(id);
