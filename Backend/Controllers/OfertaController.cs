@@ -50,23 +50,6 @@ namespace Backend.Controllers
             return oferta;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<Oferta>>> FiltroProduto()
-        {
-            SqlConnection connection = new SqlConnection();
-
-            try
-            {
-                
-            }
-            catch
-            {
-                
-                throw;
-            }
-
-            
-        }
         /// <summary>
         /// Insere dados em Oferta
         /// </summary>
