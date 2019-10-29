@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Backend.Models;
+using Backend.Domains;
+using Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,7 @@ namespace Backend.Controllers
     [Authorize (Roles = "1")]
     public class CategoriaReceitaController : ControllerBase
     {
-        InstitutoFriggaContext _context = new InstitutoFriggaContext();
+        CategoriaReceitaRepository repositorio = new CategoriaReceitaRepository();
 
         /// <summary>
         /// Mostra lista de tipos de usuários
@@ -21,7 +22,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<CategoriaReceita>>> Get()
         {
-            var categoriaReceita = await _context.CategoriaReceita.ToListAsync();
+            var categoriaReceita = await repositorio.Listar();
 
             if(categoriaReceita == null)
             {
@@ -38,7 +39,7 @@ namespace Backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<CategoriaReceita>> Get(int id)
         {
-            var categoriaReceita = await _context.CategoriaReceita.FindAsync(id);
+            var categoriaReceita = await repositorio.BuscarPorId(id);
 
             if(categoriaReceita == null)
             {
@@ -57,14 +58,14 @@ namespace Backend.Controllers
         {
             try
             {
-                await _context.AddAsync(categoriaReceita);
-                await _context.SaveChangesAsync();
+                await repositorio.Salvar(categoriaReceita);
+                return categoriaReceita;
             }
             catch(DbUpdateConcurrencyException)
             {
-                throw;
+                return BadRequest();
             }
-            return categoriaReceita;
+            
         }
         /// <summary>
         /// Atualiza dados em Tipo Usuario
@@ -80,15 +81,13 @@ namespace Backend.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(categoriaReceita).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                await repositorio.Alterar(categoriaReceita);
             }
             catch(DbUpdateConcurrencyException)
             {
-                var categoriaReceita_valido = await _context.CategoriaReceita.FindAsync();
+                var categoriaReceita_valido = await repositorio.BuscarPorId(id);
 
                 if(categoriaReceita_valido == null)
                 {
@@ -111,13 +110,12 @@ namespace Backend.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<CategoriaReceita>> Delete(int id)
         {
-            var categoriaReceita = await _context.CategoriaReceita.FindAsync(id);
+            var categoriaReceita = await repositorio.BuscarPorId(id);
             if(categoriaReceita == null)
             {
                 return NotFound();
             }
-            _context.CategoriaReceita.Remove(categoriaReceita);
-            await _context.SaveChangesAsync();
+            categoriaReceita = await repositorio.Excluir(categoriaReceita);
 
             return categoriaReceita;
         }

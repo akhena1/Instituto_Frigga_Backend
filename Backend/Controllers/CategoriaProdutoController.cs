@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Backend.Models;
+using Backend.Domains;
+using Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,7 @@ namespace Backend.Controllers
     [Authorize (Roles = "1")]
     public class CategoriaProdutoController : ControllerBase
     {
-        InstitutoFriggaContext _context = new InstitutoFriggaContext();
+        CategoriaProdutoRepository repositorio = new CategoriaProdutoRepository();
 
         /// <summary>
         /// Mostra lista de tipos de usuários
@@ -21,7 +22,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<CategoriaProduto>>> Get()
         {
-            var categoriaProduto = await _context.CategoriaProduto.ToListAsync();
+            var categoriaProduto = await repositorio.Listar();
 
             if(categoriaProduto == null)
             {
@@ -38,7 +39,7 @@ namespace Backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<CategoriaProduto>> Get(int id)
         {
-            var categoriaProduto = await _context.CategoriaProduto.FindAsync(id);
+            var categoriaProduto = await repositorio.BuscarPorId(id);
 
             if(categoriaProduto == null)
             {
@@ -57,14 +58,14 @@ namespace Backend.Controllers
         {
             try
             {
-                await _context.AddAsync(categoriaProduto);
-                await _context.SaveChangesAsync();
+                await repositorio.Salvar(categoriaProduto);
+                return categoriaProduto;
             }
             catch(DbUpdateConcurrencyException)
             {
-                throw;
+                return BadRequest();
             }
-            return categoriaProduto;
+            
         }
         /// <summary>
         /// Atualiza dados em Tipo Usuario
@@ -80,15 +81,13 @@ namespace Backend.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(categoriaProduto).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                await repositorio.Alterar(categoriaProduto);
             }
             catch(DbUpdateConcurrencyException)
             {
-                var categoriaProduto_valido = await _context.CategoriaProduto.FindAsync();
+                var categoriaProduto_valido = await repositorio.BuscarPorId(id);
 
                 if(categoriaProduto_valido == null)
                 {
@@ -111,13 +110,12 @@ namespace Backend.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<CategoriaProduto>> Delete(int id)
         {
-            var categoriaProduto = await _context.CategoriaProduto.FindAsync(id);
+            var categoriaProduto = await repositorio.BuscarPorId(id);
             if(categoriaProduto == null)
             {
                 return NotFound();
             }
-            _context.CategoriaProduto.Remove(categoriaProduto);
-            await _context.SaveChangesAsync();
+            categoriaProduto =  await repositorio.Excluir(categoriaProduto);
 
             return categoriaProduto;
         }

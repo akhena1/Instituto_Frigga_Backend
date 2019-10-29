@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Backend.Models;
+using Backend.Domains;
+using Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,7 @@ namespace Backend.Controllers
     [Authorize (Roles = "1")]
     public class EnderecoController : ControllerBase
     {
-        InstitutoFriggaContext _context = new InstitutoFriggaContext();
+        EnderecoRepository repositorio = new EnderecoRepository();
 
         /// <summary>
         /// Mostra lista de tipos de usuários
@@ -21,7 +22,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Endereco>>> Get()
         {
-            var endereco = await _context.Endereco.ToListAsync();
+            var endereco = await repositorio.Listar();
 
             if(endereco == null)
             {
@@ -39,7 +40,7 @@ namespace Backend.Controllers
         [Authorize (Roles = "1")]
         public async Task<ActionResult<Endereco>> Get(int id)
         {
-            var endereco = await _context.Endereco.FindAsync(id);
+            var endereco = await repositorio.BuscarPorId(id);
 
             if(endereco == null)
             {
@@ -61,14 +62,14 @@ namespace Backend.Controllers
         {
             try
             {
-                await _context.AddAsync(endereco);
-                await _context.SaveChangesAsync();
+                await repositorio.Salvar(endereco);
+                return endereco;
             }
             catch(DbUpdateConcurrencyException)
             {
-                throw;
+                return BadRequest();
             }
-            return endereco;
+            
         }
         /// <summary>
         /// Atualiza dados em Tipo Usuario
@@ -87,15 +88,13 @@ namespace Backend.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(endereco).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                await repositorio.Alterar(endereco);
             }
             catch(DbUpdateConcurrencyException)
             {
-                var endereco_valido = await _context.Endereco.FindAsync();
+                var endereco_valido = await repositorio.BuscarPorId(id);
 
                 if(endereco_valido == null)
                 {
@@ -121,13 +120,12 @@ namespace Backend.Controllers
         [Authorize (Roles = "3")]
         public async Task<ActionResult<Endereco>> Delete(int id)
         {
-            var endereco = await _context.Endereco.FindAsync(id);
+            var endereco = await repositorio.BuscarPorId(id);
             if(endereco == null)
             {
                 return NotFound();
             }
-            _context.Endereco.Remove(endereco);
-            await _context.SaveChangesAsync();
+            endereco = await repositorio.Excluir(endereco);
 
             return endereco;
         }

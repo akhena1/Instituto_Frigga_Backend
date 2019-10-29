@@ -18,7 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 
-//dotnet ef  dbcontext scaffold "Server=N-1S-DEV-06\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132" Microsoft.EntityFrameworkCore.SqlServer -o Models -d
+//dotnet ef  dbcontext scaffold "Server=N-1S-DEV-06\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132" Microsoft.EntityFrameworkCore.SqlServer -o Domains -d
 
 namespace Backend
 {
