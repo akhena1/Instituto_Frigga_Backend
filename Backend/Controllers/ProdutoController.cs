@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Backend.Domains;
+using Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,7 @@ namespace Backend.Controllers
     [ApiController]
     public class ProdutoController : ControllerBase
     {
-        InstitutoFriggaContext _context = new InstitutoFriggaContext();
+        ProdutoRepository repositorio = new ProdutoRepository();
 
         /// <summary>
         /// Mostra lista de tipos de usuários
@@ -20,7 +21,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Produto>>> Get()
         {
-            var produto = await _context.Produto.ToListAsync();
+            var produto = await repositorio.Listar();
 
             if(produto == null)
             {
@@ -37,7 +38,7 @@ namespace Backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Produto>> Get(int id)
         {
-            var produto = await _context.Produto.FindAsync(id);
+            var produto = await repositorio.BuscarPorId(id);
 
             if(produto == null)
             {
@@ -52,20 +53,19 @@ namespace Backend.Controllers
         /// <param name="produto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "3")]
+        [Authorize (Roles = "1 , 3")]
         public async Task<ActionResult<Produto>> Post(Produto produto)
         {
             try
             {
-                await _context.AddAsync(produto);
-                await _context.SaveChangesAsync();
+                await repositorio.Salvar(produto);
+                return produto;
             }
             catch(DbUpdateConcurrencyException)
             {
-                throw;
+                return BadRequest();
             }
-            return produto;
+            
         }
         /// <summary>
         /// Atualiza dados em Tipo Usuario
@@ -74,8 +74,7 @@ namespace Backend.Controllers
         /// <param name="produto"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "3")]
+        [Authorize (Roles = "1 , 3")]
         public async Task<ActionResult> Put(int id , Produto produto)
         {
             if (id != produto.ProdutoId)
@@ -83,15 +82,13 @@ namespace Backend.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(produto).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                await repositorio.Alterar(produto);
             }
             catch(DbUpdateConcurrencyException)
             {
-                var produto_valido = await _context.Produto.FindAsync();
+                var produto_valido = await repositorio.BuscarPorId(id);
 
                 if(produto_valido == null)
                 {
@@ -112,17 +109,15 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "3")]
+        [Authorize (Roles = "1 , 3")]
         public async Task<ActionResult<Produto>> Delete(int id)
         {
-            var produto = await _context.Produto.FindAsync(id);
+            var produto = await repositorio.BuscarPorId(id);
             if(produto == null)
             {
                 return NotFound();
             }
-            _context.Produto.Remove(produto);
-            await _context.SaveChangesAsync();
+            produto = await repositorio.Excluir(produto);
 
             return produto;
         }

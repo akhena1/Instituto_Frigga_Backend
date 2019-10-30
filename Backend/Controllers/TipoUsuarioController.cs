@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Backend.Domains;
+using Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,7 @@ namespace Backend.Controllers
     [ApiController]
     public class TipoUsuarioController : ControllerBase
     {
-        InstitutoFriggaContext _context = new InstitutoFriggaContext();
+        TipoUsuarioRepository repositorio = new TipoUsuarioRepository();
 
         /// <summary>
         /// Mostra lista de tipos de usuários
@@ -20,7 +21,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<TipoUsuario>>> Get()
         {
-            var tipoUsuario = await _context.TipoUsuario.ToListAsync();
+            var tipoUsuario = await repositorio.Listar();
 
             if(tipoUsuario == null)
             {
@@ -37,7 +38,7 @@ namespace Backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<TipoUsuario>> Get(int id)
         {
-            var tipoUsuario = await _context.TipoUsuario.FindAsync(id);
+            var tipoUsuario = await repositorio.BuscarPorId(id);
 
             if(tipoUsuario == null)
             {
@@ -57,14 +58,14 @@ namespace Backend.Controllers
         {
             try
             {
-                await _context.AddAsync(tipoUsuario);
-                await _context.SaveChangesAsync();
+                await repositorio.Alterar(tipoUsuario);
+                return tipoUsuario;
             }
             catch(DbUpdateConcurrencyException)
             {
-                throw;
+                return BadRequest();
             }
-            return tipoUsuario;
+            
         }
         /// <summary>
         /// Atualiza dados em Tipo Usuario
@@ -80,16 +81,14 @@ namespace Backend.Controllers
             {
                 return BadRequest();
             }
-
-            _context.Entry(tipoUsuario).State = EntityState.Modified;
-
+            
             try
             {
-                await _context.SaveChangesAsync();
+                await repositorio.Alterar(tipoUsuario);
             }
             catch(DbUpdateConcurrencyException)
             {
-                var tipoUsuario_valido = await _context.TipoUsuario.FindAsync();
+                var tipoUsuario_valido = await repositorio.BuscarPorId(id);
 
                 if(tipoUsuario_valido == null)
                 {
@@ -113,13 +112,12 @@ namespace Backend.Controllers
         [Authorize (Roles = "1")]
         public async Task<ActionResult<TipoUsuario>> Delete(int id)
         {
-            var tipoUsuario = await _context.TipoUsuario.FindAsync(id);
+            var tipoUsuario = await repositorio.BuscarPorId(id);
             if(tipoUsuario == null)
             {
                 return NotFound();
             }
-            _context.TipoUsuario.Remove(tipoUsuario);
-            await _context.SaveChangesAsync();
+            tipoUsuario = await repositorio.Excluir(tipoUsuario);
 
             return tipoUsuario;
         }

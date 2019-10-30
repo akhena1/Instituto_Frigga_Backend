@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Backend.Domains;
+using Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -14,7 +16,7 @@ namespace Backend.Controllers
     [ApiController]
     public class OfertaController : ControllerBase
     {
-        InstitutoFriggaContext _context = new InstitutoFriggaContext();
+        OfertaRepository repositorio = new OfertaRepository();
 
         /// <summary>
         /// Mostra lista de tipos de usuários
@@ -23,7 +25,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Oferta>>> Get()
         {
-            var oferta = await _context.Oferta.ToListAsync();
+            var oferta = await repositorio.Listar();
 
             if(oferta == null)
             {
@@ -40,7 +42,7 @@ namespace Backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Oferta>> Get(int id)
         {
-            var oferta = await _context.Oferta.FindAsync(id);
+            var oferta = await repositorio.BuscarPorId(id);
 
             if(oferta == null)
             {
@@ -56,37 +58,59 @@ namespace Backend.Controllers
         /// <param name="oferta"></param>
         /// <returns></returns>
         [HttpPost, DisableRequestSizeLimit]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "3")]
+        [Authorize (Roles = "1 , 3")]
         public async Task<ActionResult<Oferta>> Post([FromForm] Oferta oferta)
         {
         
             try
             {
-
+                // Declara variável que irá receber o nome e extensão da imagem, que sera o que iremos armazenar no banco
                 var fileName = "";
-
+                // Declara uma requisição de arquivo
                 var file = Request.Form.Files[0];
-                var folderName = Path.Combine ("imagens");
-                var pathToSave = Path.Combine (Directory.GetCurrentDirectory (), folderName);
+                    
+                    // Verifica se o arquivo enviado é realmente uma imagem
+                    if (file.ContentType == "image/jpeg"||
+                        file.ContentType == "image/png" ||
+                        file.ContentType == "image/gif" ||
+                        file.ContentType == "image/bmp" ||
+                        file.ContentType == "image/jpg"  )
+                        {
+                            // Declara o nome do diretorio que vai armazenar as imagens
+                            var folderName = Path.Combine ("imagens");
+                            // Declara o caminho do diretorio para salvar a imagem
+                            var pathToSave = Path.Combine (Directory.GetCurrentDirectory (), folderName);
 
-                if (file.Length > 0) {
-                    fileName = ContentDispositionHeaderValue.Parse (file.ContentDisposition).FileName.Trim ('"');
-                    var fullPath = Path.Combine (pathToSave, fileName);
-                    var dbPath = Path.Combine (folderName, fileName);
 
-                    using (var stream = new FileStream (fullPath, FileMode.Create)) {
-                        file.CopyTo (stream);
-                    }
-                }
+                            if (file.Length > 0) 
+                            {
+                                //Pega o nome da imagem, tira as aspas e adiciona data para diferenciar das outras imagens
+                                fileName = ContentDispositionHeaderValue.Parse (file.ContentDisposition).FileName.Trim ('"');
+                                fileName = DateTime.Now.ToFileTimeUtc().ToString() + fileName;
+                                
+                                // Declara o caminho completo e o caminho do banco
+                                var fullPath = Path.Combine (pathToSave, fileName);
+                                var dbPath = Path.Combine (folderName, fileName);
+                                
+                                // Cria o arquivo de fato no diretório passado
+                                using (var stream = new FileStream (fullPath, FileMode.Create)) 
+                                {
+                                    file.CopyTo (stream);
+                                }
+                            }
+                            
+                            // Declara que o atributo Imagem em oferta será o nome do arquivo recebido
+                            oferta.ImagemProduto = fileName;
+                            // Salva esse nome no Banco de dados
+                            await repositorio.Salvar(oferta);
+                        }
+                        else
+                        {
+                            // \"erro\": \"Insira uma imagem válida! (jpg, jpeg, png)\" } 
+                            return BadRequest(new {mensagem = "Insira uma imagem válida!"});
+                        }
 
-                oferta.ImagemProduto = fileName;
-
-                /* UploadController upload =  new UploadController();
-                oferta.ImagemProduto = upload.Upload(); */
-
-                await _context.AddAsync(oferta);
-                await _context.SaveChangesAsync();
+                
             }
             catch(DbUpdateConcurrencyException)
             {
@@ -94,7 +118,6 @@ namespace Backend.Controllers
             }
             return oferta;
         }
-
         
         
         
@@ -105,8 +128,7 @@ namespace Backend.Controllers
         /// <param name="oferta"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "3")]
+        [Authorize (Roles = "1 , 3")]
         public async Task<ActionResult> Put(int id , Oferta oferta)
         {
             if (id != oferta.OfertaId)
@@ -114,15 +136,13 @@ namespace Backend.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(oferta).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                await repositorio.Alterar(oferta);
             }
             catch(DbUpdateConcurrencyException)
             {
-                var oferta_valido = await _context.Oferta.FindAsync();
+                var oferta_valido = await repositorio.BuscarPorId(id);
 
                 if(oferta_valido == null)
                 {
@@ -130,7 +150,7 @@ namespace Backend.Controllers
                 }
                 else
                 {
-                    throw;
+                   return BadRequest();
                 }
             }
             
@@ -143,17 +163,15 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "3")]
+        [Authorize (Roles = "1 , 3")]
         public async Task<ActionResult<Oferta>> Delete(int id)
         {
-            var oferta = await _context.Oferta.FindAsync(id);
+            var oferta = await repositorio.BuscarPorId(id);
             if(oferta == null)
             {
                 return NotFound();
             }
-            _context.Oferta.Remove(oferta);
-            await _context.SaveChangesAsync();
+            oferta = await repositorio.Excluir(oferta);
 
             return oferta;
         }
