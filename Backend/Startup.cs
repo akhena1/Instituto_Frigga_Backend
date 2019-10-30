@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc.Cors;
 
 //dotnet ef  dbcontext scaffold "Server=N-1S-DEV-06\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132" Microsoft.EntityFrameworkCore.SqlServer -o Domains -d
 
@@ -59,6 +60,8 @@ namespace Backend
                 };
 
             });
+            services.AddCors();
+            
 
             
         }
@@ -70,6 +73,8 @@ namespace Backend
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(option => option.AllowAnyOrigin());    
 
             app.UseSwagger();
 

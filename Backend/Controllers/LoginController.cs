@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using Backend.Domains;
+using Backend.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -23,7 +24,7 @@ namespace backend.Controllers
             _config = config;
         }
 
-        private Usuario ValidaUsuario(Usuario login)
+        private Usuario ValidaUsuario(LoginViewModel login)
         {
             var usuario = _context.Usuario.FirstOrDefault(u => u.Email == login.Email &&  u.Senha == login.Senha);
 
@@ -55,7 +56,7 @@ namespace backend.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Login([FromBody]Usuario login)
+        public IActionResult Login([FromBody]LoginViewModel login)
         {
             IActionResult response = Unauthorized();
             var user = ValidaUsuario(login);

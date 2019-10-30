@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Backend.Domains;
+using Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,17 +12,17 @@ namespace Backend.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        InstitutoFriggaContext _context = new InstitutoFriggaContext();
+        UsuarioRepository repositorio = new UsuarioRepository();
 
         /// <summary>
-        /// Mostra lista de tipos de usuários
+        /// Mostra listande usuários
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [Authorize (Roles = "1")]
         public async Task<ActionResult<List<Usuario>>> Get()
         {
-            var usuario = await _context.Usuario.ToListAsync();
+            var usuario = await repositorio.Listar();
 
             if(usuario == null)
             {
@@ -31,7 +32,7 @@ namespace Backend.Controllers
             return usuario;
         }
         /// <summary>
-        /// Mostra tipo de usuário por ID
+        /// Exibe usuário por ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -39,7 +40,7 @@ namespace Backend.Controllers
         [Authorize (Roles = "1")]
         public async Task<ActionResult<Usuario>> Get(int id)
         {
-            var usuario = await _context.Usuario.FindAsync(id);
+            var usuario = await repositorio.BuscarPorId(id);
 
             if(usuario == null)
             {
@@ -73,14 +74,14 @@ namespace Backend.Controllers
                 {
                     return BadRequest();
                 }
-                await _context.AddAsync(usuario);
-                await _context.SaveChangesAsync();
+                await repositorio.Salvar(usuario);
+                return usuario;
             }
             catch(DbUpdateConcurrencyException)
             {
                 throw;
             }
-            return usuario;
+            
         }
 
         public bool ValidaCpf(string cpfUsuario)
@@ -222,15 +223,13 @@ namespace Backend.Controllers
             return  resultado;
         }
         /// <summary>
-        /// Atualiza dados em Tipo Usuario
+        /// Atualiza dados de Usuario
         /// </summary>
         /// <param name="id"></param>
         /// <param name="usuario"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "2")]
-        [Authorize (Roles = "3")]
+        [Authorize (Roles = "1, 2, 3")]
         public async Task<ActionResult> Put(int id , Usuario usuario)
         {
             if (id != usuario.UsuarioId)
@@ -238,15 +237,13 @@ namespace Backend.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(usuario).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                await repositorio.Alterar(usuario);
             }
             catch(DbUpdateConcurrencyException)
             {
-                var usuario_valido = await _context.Usuario.FindAsync();
+                var usuario_valido = await repositorio.BuscarPorId(id);
 
                 if(usuario_valido == null)
                 {
@@ -254,7 +251,7 @@ namespace Backend.Controllers
                 }
                 else
                 {
-                    throw;
+                    return BadRequest();
                 }
             }
             
@@ -262,7 +259,7 @@ namespace Backend.Controllers
         }
         
         /// <summary>
-        /// Deleta dados em Tipo usuario
+        /// Deleta dados de Usuario
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -270,13 +267,12 @@ namespace Backend.Controllers
         [Authorize (Roles = "1")]
         public async Task<ActionResult<Usuario>> Delete(int id)
         {
-            var usuario = await _context.Usuario.FindAsync(id);
+            var usuario = await repositorio.BuscarPorId(id);
             if(usuario == null)
             {
                 return NotFound();
             }
-            _context.Usuario.Remove(usuario);
-            await _context.SaveChangesAsync();
+            usuario = await repositorio.Excluir(usuario);
 
             return usuario;
         }

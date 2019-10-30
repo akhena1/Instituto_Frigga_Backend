@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Backend.Domains;
+using Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +14,7 @@ namespace Backend.Controllers
     [ApiController]
     public class ReceitaController : ControllerBase
     {
-        InstitutoFriggaContext _context = new InstitutoFriggaContext();
+        ReceitaRepository repositorio = new ReceitaRepository();
 
         /// <summary>
         /// Mostra lista de tipos de usuários
@@ -22,7 +23,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Receita>>> Get()
         {
-            var receita = await _context.Receita.ToListAsync();
+            var receita = await repositorio.Listar();
 
             if(receita == null)
             {
@@ -39,7 +40,7 @@ namespace Backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Receita>> Get(int id)
         {
-            var receita = await _context.Receita.FindAsync(id);
+            var receita = await repositorio.BuscarPorId(id);
 
             if(receita == null)
             {
@@ -54,9 +55,7 @@ namespace Backend.Controllers
         /// <param name="receita"></param>
         /// <returns></returns>
         [HttpPost , DisableRequestSizeLimit]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "2")]
-        [Authorize (Roles = "3")]
+        [Authorize (Roles = "1, 2, 3")]
         public async Task<ActionResult<Receita>> Post([FromForm]Receita receita)
         {
             try
@@ -80,14 +79,14 @@ namespace Backend.Controllers
 
                 receita.ImagemReceita = fileName;
 
-                await _context.AddAsync(receita);
-                await _context.SaveChangesAsync();
+                await repositorio.Salvar(receita);
+                return receita;
             }
             catch(DbUpdateConcurrencyException)
             {
-                throw;
+                return BadRequest();
             }
-            return receita;
+            
         }
         /// <summary>
         /// Atualiza dados em Tipo Usuario
@@ -96,9 +95,7 @@ namespace Backend.Controllers
         /// <param name="receita"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "2")]
-        [Authorize (Roles = "3")]
+        [Authorize (Roles = "1, 2, 3")]
         public async Task<ActionResult> Put(int id , Receita receita)
         {
             if (id != receita.ReceitaId)
@@ -106,15 +103,13 @@ namespace Backend.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(receita).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                await repositorio.Alterar(receita);
             }
             catch(DbUpdateConcurrencyException)
             {
-                var receita_valido = await _context.Receita.FindAsync();
+                var receita_valido = await repositorio.BuscarPorId(id);
 
                 if(receita_valido == null)
                 {
@@ -135,18 +130,15 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "2")]
-        [Authorize (Roles = "3")]
+        [Authorize (Roles = "1, 2, 3")]
         public async Task<ActionResult<Receita>> Delete(int id)
         {
-            var receita = await _context.Receita.FindAsync(id);
+            var receita = await repositorio.BuscarPorId(id);
             if(receita == null)
             {
                 return NotFound();
             }
-            _context.Receita.Remove(receita);
-            await _context.SaveChangesAsync();
+            receita = await repositorio.Excluir(receita);
 
             return receita;
         }
