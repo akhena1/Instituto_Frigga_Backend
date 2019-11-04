@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using Backend.Domains;
+using Backend.Repositories;
 using Backend.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ namespace backend.Controllers
     [Route("api/[controller]")]
     public class LoginController : ControllerBase
     {
-        InstitutoFriggaContext _context = new InstitutoFriggaContext();
+        LoginRepository repositorio = new LoginRepository();
 
         private IConfiguration _config;
 
@@ -26,7 +27,7 @@ namespace backend.Controllers
 
         private Usuario ValidaUsuario(LoginViewModel login)
         {
-            var usuario = _context.Usuario.FirstOrDefault(u => u.Email == login.Email &&  u.Senha == login.Senha);
+            var usuario = repositorio.ValidaUsuario(login);
 
             return usuario;
         }
