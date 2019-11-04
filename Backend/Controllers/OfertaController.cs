@@ -77,7 +77,7 @@ namespace Backend.Controllers
                         file.ContentType == "image/jpg"  )
                         {
                             // Declara o nome do diretorio que vai armazenar as imagens
-                            var folderName = Path.Combine ("imagens");
+                            var folderName = Path.Combine ("ImagensOferta");
                             // Declara o caminho do diretorio para salvar a imagem
                             var pathToSave = Path.Combine (Directory.GetCurrentDirectory (), folderName);
 

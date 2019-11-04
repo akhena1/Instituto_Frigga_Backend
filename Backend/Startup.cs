@@ -56,22 +56,18 @@ namespace Backend {
                 };
 
             });
-<<<<<<< HEAD
-            services.AddCors (options => {
-                    options.Addpolicy ("CorsPolicy",
+            /* services.AddCors (options => {
+                    options.AddPolicy ("CorsPolicy",
                         builder => builder.AllowAnyOrigin ()
                         .AllowAnyMethod ()
                         .AllowAnyHeader ()
                         .AllowCredentials ());
 
                     });
-            }
-=======
-            services.AddCors();
+            services.AddCors(); */
             
->>>>>>> 1b02d8cdb4f26aff0e3d2ce05c36f8612f5514e5
 
-        }
+        } 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure (IApplicationBuilder app, IWebHostEnvironment env) {
@@ -79,13 +75,12 @@ namespace Backend {
                 app.UseDeveloperExceptionPage ();
             }
 
-<<<<<<< HEAD
             app.UseSwagger ();
-=======
+
             app.UseCors(option => option.AllowAnyOrigin());    
 
             app.UseSwagger();
->>>>>>> 1b02d8cdb4f26aff0e3d2ce05c36f8612f5514e5
+
 
             app.UseSwaggerUI (c => {
                 c.SwaggerEndpoint ("/swagger/v1/swagger.json", "API V1");
@@ -106,3 +101,4 @@ namespace Backend {
             });
         }
     }
+}

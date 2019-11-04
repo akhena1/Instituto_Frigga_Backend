@@ -64,7 +64,7 @@ namespace Backend.Controllers
                 var fileName = "";
 
                 var file = Request.Form.Files[0];
-                var folderName = Path.Combine ("imagens");
+                var folderName = Path.Combine ("ImagensReceita");
                 var pathToSave = Path.Combine (Directory.GetCurrentDirectory (), folderName);
 
                 if (file.Length > 0) {
