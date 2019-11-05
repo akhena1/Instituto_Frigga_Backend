@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Backend.Domains;
 using Backend.Interfaces;
+using Backend.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Repositories
@@ -12,6 +13,7 @@ namespace Backend.Repositories
         {
             using(InstitutoFriggaContext _context = new InstitutoFriggaContext())
             {
+
                 _context.Entry(usuario).State = EntityState.Modified;
                  await _context.SaveChangesAsync();
             }
@@ -20,9 +22,16 @@ namespace Backend.Repositories
 
         public async Task<Usuario> BuscarPorId(int id)
         {
+
             using(InstitutoFriggaContext _context = new InstitutoFriggaContext())
             {
-                return await _context.Usuario.FindAsync(id);
+
+                var usuario = await _context.Usuario.FindAsync(id);
+                     
+                usuario.Email = null;
+                usuario.Senha = null;
+                
+                return usuario;
             }
         }
 
@@ -40,7 +49,16 @@ namespace Backend.Repositories
         {
             using(InstitutoFriggaContext _context = new InstitutoFriggaContext())
             {
-                return await _context.Usuario.ToListAsync();
+                
+                List<Usuario> listaUsuario = new List<Usuario>();
+                listaUsuario = await _context.Usuario.ToListAsync();
+
+                foreach(var item in listaUsuario)
+                {
+                    item.Email = null;
+                    item.Senha = null;
+                }
+                return listaUsuario;
             }
         }
 
