@@ -16,7 +16,7 @@ namespace Backend.Controllers
         CategoriaReceitaRepository repositorio = new CategoriaReceitaRepository();
 
         /// <summary>
-        /// Mostra lista de tipos de usuários
+        /// Mostra lista de Categorias de receitas
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -32,7 +32,7 @@ namespace Backend.Controllers
             return categoriaReceita;
         }
         /// <summary>
-        /// Mostra tipo de usuário por ID
+        /// Mostra Categoria de Receita por ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -49,7 +49,7 @@ namespace Backend.Controllers
             return categoriaReceita;
         }
         /// <summary>
-        /// Insere dados em CategoriaReceita
+        /// Insere dados em Categoria Receita
         /// </summary>
         /// <param name="categoriaReceita"></param>
         /// <returns></returns>
@@ -68,7 +68,7 @@ namespace Backend.Controllers
             
         }
         /// <summary>
-        /// Atualiza dados em Tipo Usuario
+        /// Atualiza dados em Categoria Receita
         /// </summary>
         /// <param name="id"></param>
         /// <param name="categoriaReceita"></param>
@@ -103,7 +103,7 @@ namespace Backend.Controllers
         }
         
         /// <summary>
-        /// Deleta dados em Tipo usuario
+        /// Deleta dados de Categoria Receita
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

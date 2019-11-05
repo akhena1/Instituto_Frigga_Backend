@@ -17,7 +17,7 @@ namespace Backend.Controllers
         ReceitaRepository repositorio = new ReceitaRepository();
 
         /// <summary>
-        /// Mostra lista de tipos de usuários
+        /// Mostra lista de Receitas
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -33,7 +33,7 @@ namespace Backend.Controllers
             return receita;
         }
         /// <summary>
-        /// Mostra tipo de usuário por ID
+        /// Mostra Receitas por ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -60,36 +60,23 @@ namespace Backend.Controllers
         {
             try
             {
-
-                var fileName = "";
-
+                UploadController upload = new UploadController();
                 var file = Request.Form.Files[0];
-                var folderName = Path.Combine ("ImagensReceita");
-                var pathToSave = Path.Combine (Directory.GetCurrentDirectory (), folderName);
 
-                if (file.Length > 0) {
-                    fileName = ContentDispositionHeaderValue.Parse (file.ContentDisposition).FileName.Trim ('"');
-                    var fullPath = Path.Combine (pathToSave, fileName);
-                    var dbPath = Path.Combine (folderName, fileName);
-
-                    using (var stream = new FileStream (fullPath, FileMode.Create)) {
-                        file.CopyTo (stream);
-                    }
-                }
-
-                receita.ImagemReceita = fileName;
+                receita.ImagemReceita = upload.UploadImg(file, "ImagensReceita");
 
                 await repositorio.Salvar(receita);
-                return receita;
+                
             }
             catch(DbUpdateConcurrencyException)
             {
                 return BadRequest();
             }
+            return receita;
             
         }
         /// <summary>
-        /// Atualiza dados em Tipo Usuario
+        /// Atualiza dados em Receita
         /// </summary>
         /// <param name="id"></param>
         /// <param name="receita"></param>
@@ -125,7 +112,7 @@ namespace Backend.Controllers
         }
         
         /// <summary>
-        /// Deleta dados em Tipo usuario
+        /// Deleta dados em Receitas
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

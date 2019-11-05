@@ -15,7 +15,7 @@ namespace Backend.Controllers
         ProdutoRepository repositorio = new ProdutoRepository();
 
         /// <summary>
-        /// Mostra lista de tipos de usuários
+        /// Mostra lista de Produtos
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -31,7 +31,7 @@ namespace Backend.Controllers
             return produto;
         }
         /// <summary>
-        /// Mostra tipo de usuário por ID
+        /// Mostra produtos por ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -68,7 +68,7 @@ namespace Backend.Controllers
             
         }
         /// <summary>
-        /// Atualiza dados em Tipo Usuario
+        /// Atualiza dados de Produtos
         /// </summary>
         /// <param name="id"></param>
         /// <param name="produto"></param>
@@ -104,7 +104,7 @@ namespace Backend.Controllers
         }
         
         /// <summary>
-        /// Deleta dados em Tipo usuario
+        /// Deleta dados de Produtos
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

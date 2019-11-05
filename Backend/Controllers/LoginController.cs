@@ -55,6 +55,12 @@ namespace backend.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+
+        /// <summary>
+        /// Valida o login e gera o Toker de Autorização de acordo com nível de Permissão
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost]
         public IActionResult Login([FromBody]LoginViewModel login)

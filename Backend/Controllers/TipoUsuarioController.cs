@@ -48,7 +48,7 @@ namespace Backend.Controllers
             return tipoUsuario;
         }
         /// <summary>
-        /// Insere dados em TipoUsuario
+        /// Insere dados de Tipo de Usuarios
         /// </summary>
         /// <param name="tipoUsuario"></param>
         /// <returns></returns>

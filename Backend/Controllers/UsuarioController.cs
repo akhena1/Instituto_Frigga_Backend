@@ -15,7 +15,7 @@ namespace Backend.Controllers
         UsuarioRepository repositorio = new UsuarioRepository();
 
         /// <summary>
-        /// Mostra listande usuários
+        /// Mostra lista de Usuários
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -84,6 +84,11 @@ namespace Backend.Controllers
             
         }
 
+        /// <summary>
+        /// Função que valida o CPF do Usuário
+        /// </summary>
+        /// <param name="cpfUsuario"></param>
+        /// <returns></returns>
         public bool ValidaCpf(string cpfUsuario)
         {
             cpfUsuario = cpfUsuario.Replace(" ", "").Replace(".", "").Replace("-", "").Replace("/", "");
@@ -147,6 +152,12 @@ namespace Backend.Controllers
             return resultado;
         }
 
+
+        /// <summary>
+        /// Função que valida o CNPJ do Usuário
+        /// </summary>
+        /// <param name="cnpjUsuario"></param>
+        /// <returns></returns>
         public bool ValidaCnpj(string cnpjUsuario){
 
             bool resultado = false;

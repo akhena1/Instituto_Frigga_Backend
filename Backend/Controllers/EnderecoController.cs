@@ -16,7 +16,7 @@ namespace Backend.Controllers
         EnderecoRepository repositorio = new EnderecoRepository();
 
         /// <summary>
-        /// Mostra lista de tipos de usuários
+        /// Mostra lista de endereços
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -32,7 +32,7 @@ namespace Backend.Controllers
             return endereco;
         }
         /// <summary>
-        /// Mostra tipo de usuário por ID
+        /// Mostra endereço por ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -50,7 +50,7 @@ namespace Backend.Controllers
             return endereco;
         }
         /// <summary>
-        /// Insere dados em Endereco
+        /// Insere dados de endereço
         /// </summary>
         /// <param name="endereco"></param>
         /// <returns></returns>
@@ -72,7 +72,7 @@ namespace Backend.Controllers
             
         }
         /// <summary>
-        /// Atualiza dados em Tipo Usuario
+        /// Atualiza dados de endereço
         /// </summary>
         /// <param name="id"></param>
         /// <param name="endereco"></param>
@@ -110,7 +110,7 @@ namespace Backend.Controllers
         }
         
         /// <summary>
-        /// Deleta dados em Tipo usuario
+        /// Deleta dados de endereço
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

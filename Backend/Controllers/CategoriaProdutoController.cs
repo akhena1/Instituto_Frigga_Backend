@@ -16,9 +16,9 @@ namespace Backend.Controllers
         CategoriaProdutoRepository repositorio = new CategoriaProdutoRepository();
 
         /// <summary>
-        /// Mostra lista de tipos de usuários
+        /// Mostra lista das categorias de produtos
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Categoria de Produtos</returns>
         [HttpGet]
         public async Task<ActionResult<List<CategoriaProduto>>> Get()
         {
@@ -32,10 +32,10 @@ namespace Backend.Controllers
             return categoriaProduto;
         }
         /// <summary>
-        /// Mostra tipo de usuário por ID
+        /// Mostra categoria de produtos por ID
         /// </summary>
         /// <param name="id"></param>
-        /// <returns></returns>
+        /// <returns>Categoria de produto</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<CategoriaProduto>> Get(int id)
         {
@@ -68,7 +68,7 @@ namespace Backend.Controllers
             
         }
         /// <summary>
-        /// Atualiza dados em Tipo Usuario
+        /// Atualiza dados de categorias de produtos
         /// </summary>
         /// <param name="id"></param>
         /// <param name="categoriaProduto"></param>
@@ -103,7 +103,7 @@ namespace Backend.Controllers
         }
         
         /// <summary>
-        /// Deleta dados em Tipo usuario
+        /// Deleta dados de Categoria de Produtos
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>

@@ -6531,9 +6531,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\backend.csproj",
-      "projectName": "backend",
-      "projectPath": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\backend.csproj",
+      "projectUniqueName": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\Backend.csproj",
+      "projectName": "Backend",
+      "projectPath": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\Backend.csproj",
       "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend\\obj\\",
       "projectStyle": "PackageReference",

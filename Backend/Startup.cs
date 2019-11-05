@@ -56,15 +56,14 @@ namespace Backend {
                 };
 
             });
-            /* services.AddCors (options => {
+            services.AddCors (options => {
                     options.AddPolicy ("CorsPolicy",
                         builder => builder.AllowAnyOrigin ()
                         .AllowAnyMethod ()
-                        .AllowAnyHeader ()
-                        .AllowCredentials ());
+                        .AllowAnyHeader ());
 
                     });
-            services.AddCors(); */
+            services.AddCors();
             
 
         } 
