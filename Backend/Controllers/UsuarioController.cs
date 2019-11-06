@@ -26,7 +26,7 @@ namespace Backend.Controllers
 
             if(usuario == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum usuário encontrado"});
             }
             
             return usuario;
@@ -44,7 +44,7 @@ namespace Backend.Controllers
 
             if(usuario == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum usuário encontrado para o ID informado"});
             }
 
             return usuario;
@@ -72,7 +72,7 @@ namespace Backend.Controllers
 
                 if(ValidaDoc == false)
                 {
-                    return BadRequest();
+                    return BadRequest(new{mensagem = "Erro no envio de dados"});
                 }
                 await repositorio.Salvar(usuario);
                 return usuario;
@@ -245,7 +245,7 @@ namespace Backend.Controllers
         {
             if (id != usuario.UsuarioId)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro de validção do usuário por ID"});
             }
 
             try
@@ -258,11 +258,11 @@ namespace Backend.Controllers
 
                 if(usuario_valido == null)
                 {
-                    return NotFound();
+                    return NotFound(new{mensagem = "Nenhum usuário encontrado para o ID informado"});
                 }
                 else
                 {
-                    return BadRequest();
+                    return BadRequest(new{mensagem = "Erro na alteração de dados por ID"});
                 }
             }
             
@@ -281,7 +281,7 @@ namespace Backend.Controllers
             var usuario = await repositorio.BuscarPorId(id);
             if(usuario == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum usuário encontrado para o ID informado"});
             }
             usuario = await repositorio.Excluir(usuario);
 

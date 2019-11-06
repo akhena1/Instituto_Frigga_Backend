@@ -27,7 +27,7 @@ namespace Backend.Controllers
 
             if(receita == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhuma receita encontrada"});
             }
             
             return receita;
@@ -44,7 +44,7 @@ namespace Backend.Controllers
 
             if(receita == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhuma receita encontrada para o ID informado"});
             }
 
             return receita;
@@ -70,7 +70,7 @@ namespace Backend.Controllers
             }
             catch(DbUpdateConcurrencyException)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro no envio de dados"});
             }
             return receita;
             
@@ -87,7 +87,7 @@ namespace Backend.Controllers
         {
             if (id != receita.ReceitaId)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro de validação da receita por ID"});
             }
 
             try
@@ -100,11 +100,11 @@ namespace Backend.Controllers
 
                 if(receita_valido == null)
                 {
-                    return NotFound();
+                    return NotFound(new{mensagem = "Nenhuma receita encontrada para o ID informado"});
                 }
                 else
                 {
-                    throw;
+                     return BadRequest(new{mensagem = "Erro na alteração de dados por ID"});
                 }
             }
             
@@ -123,7 +123,7 @@ namespace Backend.Controllers
             var receita = await repositorio.BuscarPorId(id);
             if(receita == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhuma receita encontrada para o ID informado"});
             }
             receita = await repositorio.Excluir(receita);
 

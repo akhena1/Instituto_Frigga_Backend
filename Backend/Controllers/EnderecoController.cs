@@ -26,7 +26,7 @@ namespace Backend.Controllers
 
             if(endereco == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhuma endereço encontrado"});
             }
             
             return endereco;
@@ -44,7 +44,7 @@ namespace Backend.Controllers
 
             if(endereco == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum endereço encontrado para o ID informado"});
             }
 
             return endereco;
@@ -67,7 +67,7 @@ namespace Backend.Controllers
             }
             catch(DbUpdateConcurrencyException)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro no envio de dados"});
             }
             
         }
@@ -85,7 +85,7 @@ namespace Backend.Controllers
         {
             if (id != endereco.EnderecoId)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro de validação do endereço por ID"});
             }
 
             try
@@ -98,11 +98,11 @@ namespace Backend.Controllers
 
                 if(endereco_valido == null)
                 {
-                    return NotFound();
+                    return NotFound(new{mensagem = "Nenhum endereço encotrado para o ID informado"});
                 }
                 else
                 {
-                    throw;
+                     return BadRequest(new{mensagem = "Erro na alteração de dados por ID"});
                 }
             }
             
@@ -123,7 +123,7 @@ namespace Backend.Controllers
             var endereco = await repositorio.BuscarPorId(id);
             if(endereco == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum endereço encontrado para o ID informado"});
             }
             endereco = await repositorio.Excluir(endereco);
 

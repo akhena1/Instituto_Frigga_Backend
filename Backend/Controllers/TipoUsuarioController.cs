@@ -25,7 +25,7 @@ namespace Backend.Controllers
 
             if(tipoUsuario == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhuma tipo de usuário encontrado"});
             }
             
             return tipoUsuario;
@@ -42,7 +42,7 @@ namespace Backend.Controllers
 
             if(tipoUsuario == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum tipo de usuário encontrado para o ID informado"});
             }
 
             return tipoUsuario;
@@ -63,7 +63,7 @@ namespace Backend.Controllers
             }
             catch(DbUpdateConcurrencyException)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro no envio de dados"});
             }
             
         }
@@ -79,7 +79,7 @@ namespace Backend.Controllers
         {
             if (id != tipoUsuario.TipoUsuarioId)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro de validação do tipo de usuário por ID"});
             }
             
             try
@@ -92,11 +92,11 @@ namespace Backend.Controllers
 
                 if(tipoUsuario_valido == null)
                 {
-                    return NotFound();
+                    return NotFound(new{mensagem = "Nenhum tipo de usuário encontrado para o ID informado"});
                 }
                 else
                 {
-                    throw;
+                    return BadRequest(new{mensagem = "Erro na alteração de dados por ID"});
                 }
             }
             
@@ -115,7 +115,7 @@ namespace Backend.Controllers
             var tipoUsuario = await repositorio.BuscarPorId(id);
             if(tipoUsuario == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum tipo de usuário encontrado para o ID informado"});
             }
             tipoUsuario = await repositorio.Excluir(tipoUsuario);
 

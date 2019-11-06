@@ -25,7 +25,7 @@ namespace Backend.Controllers
 
             if(produto == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum produto encontrado"});
             }
             
             return produto;
@@ -42,7 +42,7 @@ namespace Backend.Controllers
 
             if(produto == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum produto encontrado para o ID informado"});
             }
 
             return produto;
@@ -63,7 +63,7 @@ namespace Backend.Controllers
             }
             catch(DbUpdateConcurrencyException)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro no envio de dados"});
             }
             
         }
@@ -79,7 +79,7 @@ namespace Backend.Controllers
         {
             if (id != produto.ProdutoId)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro na validação de produto por ID"});
             }
 
             try
@@ -92,11 +92,11 @@ namespace Backend.Controllers
 
                 if(produto_valido == null)
                 {
-                    return NotFound();
+                    return NotFound(new{mensagem = "Nenhum produto encontrado para o ID informado"});
                 }
                 else
                 {
-                    throw;
+                    return BadRequest(new{mensagem = "Erro na alteração de dados por ID"});
                 }
             }
             
@@ -115,7 +115,7 @@ namespace Backend.Controllers
             var produto = await repositorio.BuscarPorId(id);
             if(produto == null)
             {
-                return NotFound();
+                  return NotFound(new{mensagem = "Nenhum produto encontrado para o ID informado"});
             }
             produto = await repositorio.Excluir(produto);
 

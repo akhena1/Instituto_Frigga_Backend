@@ -26,7 +26,7 @@ namespace Backend.Controllers
 
             if(categoriaReceita == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhuma categoria encontrada"});
             }
             
             return categoriaReceita;
@@ -43,7 +43,7 @@ namespace Backend.Controllers
 
             if(categoriaReceita == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhuma categoria encontrada para o ID informado"});
             }
 
             return categoriaReceita;
@@ -63,7 +63,7 @@ namespace Backend.Controllers
             }
             catch(DbUpdateConcurrencyException)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro no envio de dados"});
             }
             
         }
@@ -78,7 +78,7 @@ namespace Backend.Controllers
         {
             if (id != categoriaReceita.CategoriaReceitaId)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro de validação da categoria por ID"});
             }
 
             try
@@ -91,7 +91,7 @@ namespace Backend.Controllers
 
                 if(categoriaReceita_valido == null)
                 {
-                    return NotFound();
+                    return NotFound(new{mensagem = "Nenhuma categoria encontrada para o ID informado"});
                 }
                 else
                 {
@@ -113,7 +113,7 @@ namespace Backend.Controllers
             var categoriaReceita = await repositorio.BuscarPorId(id);
             if(categoriaReceita == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhuma categoria encontrada para o ID informado"});
             }
             categoriaReceita = await repositorio.Excluir(categoriaReceita);
 
