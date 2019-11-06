@@ -43,7 +43,9 @@ namespace backend.Controllers
                 new Claim(JwtRegisteredClaimNames.Email, userInfo.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.Role, userInfo.TipoUsuarioId.ToString()),
-                new Claim("Role", userInfo.TipoUsuarioId.ToString())
+                new Claim("Role", userInfo.TipoUsuarioId.ToString()),
+                new Claim("Id", userInfo.UsuarioId.ToString()),
+                new Claim(ClaimTypes.PrimarySid, userInfo.UsuarioId.ToString()),
             };
             
             var token = new JwtSecurityToken(

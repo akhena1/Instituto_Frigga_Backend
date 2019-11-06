@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Backend.Domains;
 using Backend.Repositories;
@@ -67,7 +69,15 @@ namespace Backend.Controllers
                 UploadController upload =  new UploadController();
                 
                 var file = Request.Form.Files[0];
-                oferta.ImagemProduto = upload.UploadImg(file, "ImagensOferta");            
+                oferta.ImagemProduto = upload.UploadImg(file, "ImagensOferta");     
+
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+
+                IEnumerable<Claim> claim = identity.Claims;
+
+                var idClaim = claim.Where(x => x.Type == ClaimTypes.PrimarySid).FirstOrDefault();    
+
+                oferta.UsuarioId = Convert.ToInt32((idClaim.Value));   
                             
 
                 await repositorio.Salvar(oferta);

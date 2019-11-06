@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Backend.Domains;
 using Backend.Repositories;
@@ -65,6 +68,13 @@ namespace Backend.Controllers
 
                 receita.ImagemReceita = upload.UploadImg(file, "ImagensReceita");
 
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                IEnumerable<Claim> claims = identity.Claims;
+                var idClaim = claims.Where(x => x.Type == ClaimTypes.PrimarySid).FirstOrDefault();
+
+                receita.UsuarioId = Convert.ToInt32((idClaim.Value));
+
+                
                 await repositorio.Salvar(receita);
                 
             }

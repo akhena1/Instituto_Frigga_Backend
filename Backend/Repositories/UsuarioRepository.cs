@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Backend.Domains;
 using Backend.Interfaces;
@@ -50,8 +51,8 @@ namespace Backend.Repositories
             using(InstitutoFriggaContext _context = new InstitutoFriggaContext())
             {
                 
-                List<Usuario> listaUsuario = new List<Usuario>();
-                listaUsuario = await _context.Usuario.ToListAsync();
+                //List<Usuario> listaUsuario = new List<Usuario>();
+                var listaUsuario = await _context.Usuario.Include(o => o.Oferta).ToListAsync();
 
                 foreach(var item in listaUsuario)
                 {
