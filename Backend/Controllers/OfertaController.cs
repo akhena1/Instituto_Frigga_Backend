@@ -31,7 +31,7 @@ namespace Backend.Controllers
 
             if(oferta == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhuma oferta encontrada"});
             }
             
             return oferta;
@@ -48,7 +48,7 @@ namespace Backend.Controllers
 
             if(oferta == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhuma oferta encontrada para o ID informado"});
             }
 
             return oferta;
@@ -83,9 +83,9 @@ namespace Backend.Controllers
                 await repositorio.Salvar(oferta);
    
             }
-            catch(DbUpdateConcurrencyException)
+            catch(DbUpdateConcurrencyException ex)
             {
-                throw;
+            return BadRequest(new{mensagem = "Erro no envio de dados" + ex});
             }
             return oferta;
         }
@@ -104,24 +104,24 @@ namespace Backend.Controllers
         {
             if (id != oferta.OfertaId)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro na validação da oferta por ID"});
             }
 
             try
             {
                 await repositorio.Alterar(oferta);
             }
-            catch(DbUpdateConcurrencyException)
+            catch(DbUpdateConcurrencyException ex)
             {
                 var oferta_valido = await repositorio.BuscarPorId(id);
 
                 if(oferta_valido == null)
                 {
-                    return NotFound();
+                    return NotFound(new{mensagem = "Nenhuma oferta encontrada para o ID informado"});
                 }
                 else
                 {
-                   return BadRequest();
+                   return BadRequest(new{mensagem = "Erro na alteração de dados por ID" + ex});
                 }
             }
             
@@ -140,7 +140,7 @@ namespace Backend.Controllers
             var oferta = await repositorio.BuscarPorId(id);
             if(oferta == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhuma oferta encontrada para o ID informado"});
             }
             oferta = await repositorio.Excluir(oferta);
 

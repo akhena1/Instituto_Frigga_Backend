@@ -25,7 +25,7 @@ namespace Backend.Controllers
 
             if(produto == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum produto encontrado"});
             }
             
             return produto;
@@ -42,7 +42,7 @@ namespace Backend.Controllers
 
             if(produto == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum produto encontrado para o ID informado"});
             }
 
             return produto;
@@ -61,9 +61,9 @@ namespace Backend.Controllers
                 await repositorio.Salvar(produto);
                 return produto;
             }
-            catch(DbUpdateConcurrencyException)
+            catch(DbUpdateConcurrencyException ex)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro no envio de dados" + ex});
             }
             
         }
@@ -79,24 +79,24 @@ namespace Backend.Controllers
         {
             if (id != produto.ProdutoId)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro na validação de produto por ID"});
             }
 
             try
             {
                 await repositorio.Alterar(produto);
             }
-            catch(DbUpdateConcurrencyException)
+            catch(DbUpdateConcurrencyException ex)
             {
                 var produto_valido = await repositorio.BuscarPorId(id);
 
                 if(produto_valido == null)
                 {
-                    return NotFound();
+                    return NotFound(new{mensagem = "Nenhum produto encontrado para o ID informado"});
                 }
                 else
                 {
-                    throw;
+                    return BadRequest(new{mensagem = "Erro na alteração de dados por ID" + ex});
                 }
             }
             
@@ -115,7 +115,7 @@ namespace Backend.Controllers
             var produto = await repositorio.BuscarPorId(id);
             if(produto == null)
             {
-                return NotFound();
+                  return NotFound(new{mensagem = "Nenhum produto encontrado para o ID informado"});
             }
             produto = await repositorio.Excluir(produto);
 

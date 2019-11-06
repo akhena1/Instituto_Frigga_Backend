@@ -26,7 +26,7 @@ namespace Backend.Controllers
 
             if(endereco == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhuma endereço encontrado"});
             }
             
             return endereco;
@@ -44,7 +44,7 @@ namespace Backend.Controllers
 
             if(endereco == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum endereço encontrado para o ID informado"});
             }
 
             return endereco;
@@ -65,9 +65,9 @@ namespace Backend.Controllers
                 await repositorio.Salvar(endereco);
                 return endereco;
             }
-            catch(DbUpdateConcurrencyException)
+            catch(DbUpdateConcurrencyException ex )
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro no envio de dados" + ex});
             }
             
         }
@@ -85,24 +85,24 @@ namespace Backend.Controllers
         {
             if (id != endereco.EnderecoId)
             {
-                return BadRequest();
+                return BadRequest(new{mensagem = "Erro de validação do endereço por ID"});
             }
 
             try
             {
                 await repositorio.Alterar(endereco);
             }
-            catch(DbUpdateConcurrencyException)
+            catch(DbUpdateConcurrencyException ex)
             {
                 var endereco_valido = await repositorio.BuscarPorId(id);
 
                 if(endereco_valido == null)
                 {
-                    return NotFound();
+                    return NotFound(new{mensagem = "Nenhum endereço encotrado para o ID informado"});
                 }
                 else
                 {
-                    throw;
+                     return BadRequest(new{mensagem = "Erro na alteração de dados por ID" + ex});
                 }
             }
             
@@ -123,7 +123,7 @@ namespace Backend.Controllers
             var endereco = await repositorio.BuscarPorId(id);
             if(endereco == null)
             {
-                return NotFound();
+                return NotFound(new{mensagem = "Nenhum endereço encontrado para o ID informado"});
             }
             endereco = await repositorio.Excluir(endereco);
 
