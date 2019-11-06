@@ -65,9 +65,9 @@ namespace Backend.Controllers
                 await repositorio.Salvar(endereco);
                 return endereco;
             }
-            catch(DbUpdateConcurrencyException)
+            catch(DbUpdateConcurrencyException ex )
             {
-                return BadRequest(new{mensagem = "Erro no envio de dados"});
+                return BadRequest(new{mensagem = "Erro no envio de dados" + ex});
             }
             
         }
@@ -92,7 +92,7 @@ namespace Backend.Controllers
             {
                 await repositorio.Alterar(endereco);
             }
-            catch(DbUpdateConcurrencyException)
+            catch(DbUpdateConcurrencyException ex)
             {
                 var endereco_valido = await repositorio.BuscarPorId(id);
 
@@ -102,7 +102,7 @@ namespace Backend.Controllers
                 }
                 else
                 {
-                     return BadRequest(new{mensagem = "Erro na alteração de dados por ID"});
+                     return BadRequest(new{mensagem = "Erro na alteração de dados por ID" + ex});
                 }
             }
             

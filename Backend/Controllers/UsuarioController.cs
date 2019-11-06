@@ -252,7 +252,7 @@ namespace Backend.Controllers
             {
                 await repositorio.Alterar(usuario);
             }
-            catch(DbUpdateConcurrencyException)
+            catch(DbUpdateConcurrencyException ex)
             {
                 var usuario_valido = await repositorio.BuscarPorId(id);
 
@@ -262,7 +262,7 @@ namespace Backend.Controllers
                 }
                 else
                 {
-                    return BadRequest(new{mensagem = "Erro na alteração de dados por ID"});
+                    return BadRequest(new{mensagem = "Erro na alteração de dados por ID" + ex});
                 }
             }
             

@@ -61,9 +61,9 @@ namespace Backend.Controllers
                 await repositorio.Salvar(categoriaReceita);
                 return categoriaReceita;
             }
-            catch(DbUpdateConcurrencyException)
+            catch(DbUpdateConcurrencyException ex )
             {
-                return BadRequest(new{mensagem = "Erro no envio de dados"});
+                return BadRequest(new{mensagem = "Erro no envio de dados" + ex});
             }
             
         }
@@ -85,7 +85,7 @@ namespace Backend.Controllers
             {
                 await repositorio.Alterar(categoriaReceita);
             }
-            catch(DbUpdateConcurrencyException)
+            catch(DbUpdateConcurrencyException ex)
             {
                 var categoriaReceita_valido = await repositorio.BuscarPorId(id);
 
@@ -95,7 +95,7 @@ namespace Backend.Controllers
                 }
                 else
                 {
-                    throw;
+                    return BadRequest(new{mensagem = "Erro na alteração de dados por ID" + ex});
                 }
             }
             
