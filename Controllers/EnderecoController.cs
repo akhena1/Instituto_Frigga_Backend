@@ -1,16 +1,19 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
-using Backend.Domains;
-using Backend.Repositories;
+using Instituto_Frigga_Backend.Domains;
+using Instituto_Frigga_Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Backend.Controllers
+namespace Instituto_Frigga_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize (Roles = "1")]
+    [Authorize]
     public class EnderecoController : ControllerBase
     {
         EnderecoRepository repositorio = new EnderecoRepository();
@@ -37,7 +40,6 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        [Authorize (Roles = "1")]
         public async Task<ActionResult<Endereco>> Get(int id)
         {
             var endereco = await repositorio.BuscarPorId(id);
@@ -55,13 +57,16 @@ namespace Backend.Controllers
         /// <param name="endereco"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "2")]
-        [Authorize (Roles = "3")]
         public async Task<ActionResult<Endereco>> Post(Endereco endereco)
         {
             try
             {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                IEnumerable<Claim> claims = identity.Claims;
+                var idClaim = claims.Where(x => x.Type == ClaimTypes.PrimarySid).FirstOrDefault();
+
+                endereco.UsuarioId = Convert.ToInt32((idClaim.Value));
+
                 await repositorio.Salvar(endereco);
                 return endereco;
             }
@@ -78,9 +83,6 @@ namespace Backend.Controllers
         /// <param name="endereco"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "2")]
-        [Authorize (Roles = "3")]
         public async Task<ActionResult> Put(int id , Endereco endereco)
         {
             if (id != endereco.EnderecoId)
@@ -115,9 +117,6 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize (Roles = "1")]
-        [Authorize (Roles = "2")]
-        [Authorize (Roles = "3")]
         public async Task<ActionResult<Endereco>> Delete(int id)
         {
             var endereco = await repositorio.BuscarPorId(id);

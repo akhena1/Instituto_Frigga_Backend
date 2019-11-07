@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Backend.Domains
+namespace Instituto_Frigga_Backend.Domains
 {
     public partial class InstitutoFriggaContext : DbContext
     {

@@ -21,7 +21,7 @@ using Microsoft.AspNetCore.Mvc.Cors;
 
 //dotnet ef  dbcontext scaffold "Server=N-1S-DEV-06\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132" Microsoft.EntityFrameworkCore.SqlServer -o Domains -d
 
-namespace Backend {
+namespace Instituto_Frigga_Backend {
     public class Startup {
         public Startup (IConfiguration configuration) {
             Configuration = configuration;

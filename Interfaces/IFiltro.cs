@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Backend.Domains;
+using Instituto_Frigga_Backend.Domains;
 using Microsoft.Data.SqlClient;
 
-namespace Backend.Interfaces
+namespace Instituto_Frigga_Backend.Interfaces
 {
     public interface IFiltro
     {

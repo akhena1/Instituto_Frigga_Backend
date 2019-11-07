@@ -5,14 +5,14 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Backend.Domains;
-using Backend.Repositories;
+using Instituto_Frigga_Backend.Domains;
+using Instituto_Frigga_Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
-namespace Backend.Controllers
+namespace Instituto_Frigga_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

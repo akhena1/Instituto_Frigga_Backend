@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Backend.Domains;
-using Backend.Repositories;
+using Instituto_Frigga_Backend.Domains;
+using Instituto_Frigga_Backend.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace Backend.Controllers
+namespace Instituto_Frigga_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

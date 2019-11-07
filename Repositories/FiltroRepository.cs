@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Backend.Domains;
-using Backend.Interfaces;
+using Instituto_Frigga_Backend.Domains;
+using Instituto_Frigga_Backend.Interfaces;
 using Microsoft.Data.SqlClient;
 
-namespace Backend.Repositories
+namespace Instituto_Frigga_Backend.Repositories
 {
     public class FiltroRepository : IFiltro
     {

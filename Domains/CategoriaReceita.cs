@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Backend.Domains
+namespace Instituto_Frigga_Backend.Domains
 {
     [Table("Categoria_receita")]
     public partial class CategoriaReceita

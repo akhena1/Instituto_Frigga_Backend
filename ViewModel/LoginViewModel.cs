@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Backend.ViewModel
+namespace Instituto_Frigga_Backend.ViewModel
 {
     public class LoginViewModel
     {

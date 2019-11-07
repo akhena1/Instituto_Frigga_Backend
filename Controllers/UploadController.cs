@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Backend.Controllers
+namespace Instituto_Frigga_Backend.Controllers
 {
 
     public class UploadController : ControllerBase

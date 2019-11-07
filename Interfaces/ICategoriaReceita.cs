@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Backend.Domains;
+using Instituto_Frigga_Backend.Domains;
 
-namespace Backend.Interfaces
+namespace Instituto_Frigga_Backend.Interfaces
 {
     public interface ICategoriaReceita
     {

@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Backend.Domains;
-using Backend.Repositories;
+using Instituto_Frigga_Backend.Domains;
+using Instituto_Frigga_Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Backend.Controllers
+namespace Instituto_Frigga_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,7 +19,7 @@ namespace Backend.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Authorize (Roles = "1")]
+        [Authorize]
         public async Task<ActionResult<List<Usuario>>> Get()
         {
             var usuario = await repositorio.Listar();
@@ -240,7 +240,7 @@ namespace Backend.Controllers
         /// <param name="usuario"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [Authorize (Roles = "1, 2, 3")]
+        [Authorize]
         public async Task<ActionResult> Put(int id , Usuario usuario)
         {
             if (id != usuario.UsuarioId)

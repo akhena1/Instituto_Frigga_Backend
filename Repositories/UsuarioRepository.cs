@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Backend.Domains;
-using Backend.Interfaces;
-using Backend.ViewModel;
+using Instituto_Frigga_Backend.Domains;
+using Instituto_Frigga_Backend.Interfaces;
+using Instituto_Frigga_Backend.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace Backend.Repositories
+namespace Instituto_Frigga_Backend.Repositories
 {
     public class UsuarioRepository : IUsuario
     {
@@ -52,7 +52,7 @@ namespace Backend.Repositories
             {
                 
                 //List<Usuario> listaUsuario = new List<Usuario>();
-                var listaUsuario = await _context.Usuario.Include(o => o.Oferta).ToListAsync();
+                var listaUsuario = await _context.Usuario.ToListAsync();
 
                 foreach(var item in listaUsuario)
                 {

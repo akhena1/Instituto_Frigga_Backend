@@ -5,13 +5,13 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Backend.Domains;
-using Backend.Repositories;
+using Instituto_Frigga_Backend.Domains;
+using Instituto_Frigga_Backend.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Backend.Controllers
+namespace Instituto_Frigga_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -58,7 +58,7 @@ namespace Backend.Controllers
         /// <param name="receita"></param>
         /// <returns></returns>
         [HttpPost , DisableRequestSizeLimit]
-        [Authorize (Roles = "1, 2, 3")]
+        [Authorize]
         public async Task<ActionResult<Receita>> Post([FromForm]Receita receita)
         {
             try
@@ -92,7 +92,7 @@ namespace Backend.Controllers
         /// <param name="receita"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [Authorize (Roles = "1, 2, 3")]
+        [Authorize]
         public async Task<ActionResult> Put(int id , Receita receita)
         {
             if (id != receita.ReceitaId)
@@ -127,7 +127,7 @@ namespace Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize (Roles = "1, 2, 3")]
+        [Authorize]
         public async Task<ActionResult<Receita>> Delete(int id)
         {
             var receita = await repositorio.BuscarPorId(id);

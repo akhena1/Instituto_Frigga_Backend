@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using Backend.Domains;
-using Backend.ViewModel;
+using Instituto_Frigga_Backend.Domains;
+using Instituto_Frigga_Backend.ViewModel;
 
-namespace Backend.Interfaces
+namespace Instituto_Frigga_Backend.Interfaces
 {
     public interface ILogin
     {

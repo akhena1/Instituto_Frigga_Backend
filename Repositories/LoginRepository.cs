@@ -1,10 +1,10 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Backend.Domains;
-using Backend.Interfaces;
-using Backend.ViewModel;
+using Instituto_Frigga_Backend.Domains;
+using Instituto_Frigga_Backend.Interfaces;
+using Instituto_Frigga_Backend.ViewModel;
 
-namespace Backend.Repositories
+namespace Instituto_Frigga_Backend.Repositories
 {
     public class LoginRepository : ILogin
     {

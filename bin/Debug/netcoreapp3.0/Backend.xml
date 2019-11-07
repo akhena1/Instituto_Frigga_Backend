@@ -4,27 +4,27 @@
         <name>Backend</name>
     </assembly>
     <members>
-        <member name="M:Backend.Controllers.CategoriaProdutoController.Get">
+        <member name="M:Instituto_Frigga_Instituto_Frigga_Backend.Controllers.CategoriaProdutoController.Get">
             <summary>
             Mostra lista das categorias de produtos
             </summary>
             <returns>Categoria de Produtos</returns>
         </member>
-        <member name="M:Backend.Controllers.CategoriaProdutoController.Get(System.Int32)">
+        <member name="M:Instituto_Frigga_Instituto_Frigga_Backend.Controllers.CategoriaProdutoController.Get(System.Int32)">
             <summary>
             Mostra categoria de produtos por ID
             </summary>
             <param name="id"></param>
             <returns>Categoria de produto</returns>
         </member>
-        <member name="M:Backend.Controllers.CategoriaProdutoController.Post(Backend.Domains.CategoriaProduto)">
+        <member name="M:Instituto_Frigga_Instituto_Frigga_Backend.Controllers.CategoriaProdutoController.Post(Instituto_Frigga_Backend.Domains.CategoriaProduto)">
             <summary>
             Insere dados em CategoriaProduto
             </summary>
             <param name="categoriaProduto"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.CategoriaProdutoController.Put(System.Int32,Backend.Domains.CategoriaProduto)">
+        <member name="M:Instituto_Frigga_Instituto_Frigga_Backend.Controllers.CategoriaProdutoController.Put(System.Int32,Instituto_Frigga_Backend.Domains.CategoriaProduto)">
             <summary>
             Atualiza dados de categorias de produtos
             </summary>
@@ -32,34 +32,34 @@
             <param name="categoriaProduto"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.CategoriaProdutoController.Delete(System.Int32)">
+        <member name="M:Instituto_Frigga_Instituto_Frigga_Backend.Controllers.CategoriaProdutoController.Delete(System.Int32)">
             <summary>
             Deleta dados de Categoria de Produtos
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.CategoriaReceitaController.Get">
+        <member name="M:Instituto_Frigga_Backend.Controllers.CategoriaReceitaController.Get">
             <summary>
             Mostra lista de Categorias de receitas
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.CategoriaReceitaController.Get(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.CategoriaReceitaController.Get(System.Int32)">
             <summary>
             Mostra Categoria de Receita por ID
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.CategoriaReceitaController.Post(Backend.Domains.CategoriaReceita)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.CategoriaReceitaController.Post(Instituto_Frigga_Backend.Domains.CategoriaReceita)">
             <summary>
             Insere dados em Categoria Receita
             </summary>
             <param name="categoriaReceita"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.CategoriaReceitaController.Put(System.Int32,Backend.Domains.CategoriaReceita)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.CategoriaReceitaController.Put(System.Int32,Instituto_Frigga_Backend.Domains.CategoriaReceita)">
             <summary>
             Atualiza dados em Categoria Receita
             </summary>
@@ -67,34 +67,34 @@
             <param name="categoriaReceita"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.CategoriaReceitaController.Delete(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.CategoriaReceitaController.Delete(System.Int32)">
             <summary>
             Deleta dados de Categoria Receita
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.EnderecoController.Get">
+        <member name="M:Instituto_Frigga_Backend.Controllers.EnderecoController.Get">
             <summary>
             Mostra lista de endereços
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.EnderecoController.Get(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.EnderecoController.Get(System.Int32)">
             <summary>
             Mostra endereço por ID
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.EnderecoController.Post(Backend.Domains.Endereco)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.EnderecoController.Post(Instituto_Frigga_Backend.Domains.Endereco)">
             <summary>
             Insere dados de endereço
             </summary>
             <param name="endereco"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.EnderecoController.Put(System.Int32,Backend.Domains.Endereco)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.EnderecoController.Put(System.Int32,Instituto_Frigga_Backend.Domains.Endereco)">
             <summary>
             Atualiza dados de endereço
             </summary>
@@ -102,48 +102,48 @@
             <param name="endereco"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.EnderecoController.Delete(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.EnderecoController.Delete(System.Int32)">
             <summary>
             Deleta dados de endereço
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.FiltroController.FiltroOferta(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.FiltroController.FiltroOferta(System.Int32)">
             <summary>
             Filtra oferta por ID de Categoria Produto
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.FiltroController.FiltroReceita(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.FiltroController.FiltroReceita(System.Int32)">
             <summary>
             Filtra receita por ID de Categoria Receita
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.OfertaController.Get">
+        <member name="M:Instituto_Frigga_Backend.Controllers.OfertaController.Get">
             <summary>
             Mostra lista de Ofertas
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.OfertaController.Get(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.OfertaController.Get(System.Int32)">
             <summary>
             Mostra Oferta por ID
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.OfertaController.Post(Backend.Domains.Oferta)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.OfertaController.Post(Instituto_Frigga_Backend.Domains.Oferta)">
             <summary>
             Insere dados em Oferta
             </summary>
             <param name="oferta"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.OfertaController.Put(System.Int32,Backend.Domains.Oferta)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.OfertaController.Put(System.Int32,Instituto_Frigga_Backend.Domains.Oferta)">
             <summary>
             Atualiza dados de Ofertas
             </summary>
@@ -151,34 +151,34 @@
             <param name="oferta"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.OfertaController.Delete(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.OfertaController.Delete(System.Int32)">
             <summary>
             Deleta dados em Ofertas
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.ProdutoController.Get">
+        <member name="M:Instituto_Frigga_Backend.Controllers.ProdutoController.Get">
             <summary>
             Mostra lista de Produtos
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.ProdutoController.Get(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.ProdutoController.Get(System.Int32)">
             <summary>
             Mostra produtos por ID
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.ProdutoController.Post(Backend.Domains.Produto)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.ProdutoController.Post(Instituto_Frigga_Backend.Domains.Produto)">
             <summary>
             Insere dados em Produto
             </summary>
             <param name="produto"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.ProdutoController.Put(System.Int32,Backend.Domains.Produto)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.ProdutoController.Put(System.Int32,Instituto_Frigga_Backend.Domains.Produto)">
             <summary>
             Atualiza dados de Produtos
             </summary>
@@ -186,34 +186,34 @@
             <param name="produto"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.ProdutoController.Delete(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.ProdutoController.Delete(System.Int32)">
             <summary>
             Deleta dados de Produtos
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.ReceitaController.Get">
+        <member name="M:Instituto_Frigga_Backend.Controllers.ReceitaController.Get">
             <summary>
             Mostra lista de Receitas
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.ReceitaController.Get(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.ReceitaController.Get(System.Int32)">
             <summary>
             Mostra Receitas por ID
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.ReceitaController.Post(Backend.Domains.Receita)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.ReceitaController.Post(Instituto_Frigga_Backend.Domains.Receita)">
             <summary>
             Insere dados em Receita
             </summary>
             <param name="receita"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.ReceitaController.Put(System.Int32,Backend.Domains.Receita)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.ReceitaController.Put(System.Int32,Instituto_Frigga_Backend.Domains.Receita)">
             <summary>
             Atualiza dados em Receita
             </summary>
@@ -221,34 +221,34 @@
             <param name="receita"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.ReceitaController.Delete(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.ReceitaController.Delete(System.Int32)">
             <summary>
             Deleta dados em Receitas
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.TipoUsuarioController.Get">
+        <member name="M:Instituto_Frigga_Backend.Controllers.TipoUsuarioController.Get">
             <summary>
             Mostra lista de tipos de usuários
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.TipoUsuarioController.Get(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.TipoUsuarioController.Get(System.Int32)">
             <summary>
             Mostra tipo de usuário por ID
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.TipoUsuarioController.Post(Backend.Domains.TipoUsuario)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.TipoUsuarioController.Post(Instituto_Frigga_Backend.Domains.TipoUsuario)">
             <summary>
             Insere dados de Tipo de Usuarios
             </summary>
             <param name="tipoUsuario"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.TipoUsuarioController.Put(System.Int32,Backend.Domains.TipoUsuario)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.TipoUsuarioController.Put(System.Int32,Instituto_Frigga_Backend.Domains.TipoUsuario)">
             <summary>
             Atualiza dados em Tipo Usuario
             </summary>
@@ -256,14 +256,14 @@
             <param name="tipoUsuario"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.TipoUsuarioController.Delete(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.TipoUsuarioController.Delete(System.Int32)">
             <summary>
             Deleta dados em Tipo usuario
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.UploadController.UploadImg(Microsoft.AspNetCore.Http.IFormFile,System.String)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.UploadController.UploadImg(Microsoft.AspNetCore.Http.IFormFile,System.String)">
             <summary>
             Valída uma imagem, envia ela para uma pasta e retorna o seu nome e extensão de arquivo
             </summary>
@@ -271,41 +271,41 @@
             <param name="pasta"></param>
             <returns>Nome da Imagem</returns>
         </member>
-        <member name="M:Backend.Controllers.UsuarioController.Get">
+        <member name="M:Instituto_Frigga_Backend.Controllers.UsuarioController.Get">
             <summary>
             Mostra lista de Usuários
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.UsuarioController.Get(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.UsuarioController.Get(System.Int32)">
             <summary>
             Exibe usuário por ID
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.UsuarioController.Post(Backend.Domains.Usuario)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.UsuarioController.Post(Instituto_Frigga_Backend.Domains.Usuario)">
             <summary>
             Insere dados em Usuario
             </summary>
             <param name="usuario"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.UsuarioController.ValidaCpf(System.String)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.UsuarioController.ValidaCpf(System.String)">
             <summary>
             Função que valida o CPF do Usuário
             </summary>
             <param name="cpfUsuario"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.UsuarioController.ValidaCnpj(System.String)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.UsuarioController.ValidaCnpj(System.String)">
             <summary>
             Função que valida o CNPJ do Usuário
             </summary>
             <param name="cnpjUsuario"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.UsuarioController.Put(System.Int32,Backend.Domains.Usuario)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.UsuarioController.Put(System.Int32,Instituto_Frigga_Backend.Domains.Usuario)">
             <summary>
             Atualiza dados de Usuario
             </summary>
@@ -313,14 +313,14 @@
             <param name="usuario"></param>
             <returns></returns>
         </member>
-        <member name="M:Backend.Controllers.UsuarioController.Delete(System.Int32)">
+        <member name="M:Instituto_Frigga_Backend.Controllers.UsuarioController.Delete(System.Int32)">
             <summary>
             Deleta dados de Usuario
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:backend.Controllers.LoginController.Login(Backend.ViewModel.LoginViewModel)">
+        <member name="M:backend.Controllers.LoginController.Login(Instituto_Frigga_Backend.ViewModel.LoginViewModel)">
             <summary>
             Valida o login e gera o Toker de Autorização de acordo com nível de Permissão
             </summary>
