@@ -74,6 +74,20 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:Instituto_Frigga_Backend.Controllers.DocValidatorController.ValidaCpf(System.String)">
+            <summary>
+            Função que valida o CPF do Usuário
+            </summary>
+            <param name="cpfUsuario"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Instituto_Frigga_Backend.Controllers.DocValidatorController.ValidaCnpj(System.String)">
+            <summary>
+            Função que valida o CNPJ do Usuário
+            </summary>
+            <param name="cnpjUsuario"></param>
+            <returns></returns>
+        </member>
         <member name="M:Instituto_Frigga_Backend.Controllers.EnderecoController.Get">
             <summary>
             Mostra lista de endereços
@@ -289,20 +303,6 @@
             Insere dados em Usuario
             </summary>
             <param name="usuario"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Instituto_Frigga_Backend.Controllers.UsuarioController.ValidaCpf(System.String)">
-            <summary>
-            Função que valida o CPF do Usuário
-            </summary>
-            <param name="cpfUsuario"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Instituto_Frigga_Backend.Controllers.UsuarioController.ValidaCnpj(System.String)">
-            <summary>
-            Função que valida o CNPJ do Usuário
-            </summary>
-            <param name="cnpjUsuario"></param>
             <returns></returns>
         </member>
         <member name="M:Instituto_Frigga_Backend.Controllers.UsuarioController.Put(System.Int32,Instituto_Frigga_Backend.Domains.Usuario)">
