@@ -10,7 +10,7 @@ namespace Instituto_Frigga_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize (Roles = "1")]
+    [Authorize]
     public class CategoriaReceitaController : ControllerBase
     {
         CategoriaReceitaRepository repositorio = new CategoriaReceitaRepository();
