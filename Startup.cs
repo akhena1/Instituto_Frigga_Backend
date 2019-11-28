@@ -18,6 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc.Cors;
+using Microsoft.Extensions.FileProviders;
 
 //dotnet ef  dbcontext scaffold "Server=N-1S-DEV-06\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132" Microsoft.EntityFrameworkCore.SqlServer -o Domains -d
 
@@ -85,11 +86,20 @@ namespace Instituto_Frigga_Backend {
                 c.SwaggerEndpoint ("/swagger/v1/swagger.json", "API V1");
             });
 
+            app.UseStaticFiles(); // For the wwwroot folder
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "arquivos")),
+                RequestPath = "/arquivos"
+            });
+
             app.UseAuthentication ();
 
             app.UseCors (builder => builder.AllowAnyHeader ().AllowAnyMethod ().AllowAnyOrigin ());
 
-            app.UseHttpsRedirection ();
+            //app.UseHttpsRedirection ();
 
             app.UseRouting ();
 
