@@ -69,7 +69,7 @@ namespace Instituto_Frigga_Backend.Controllers
                 UploadController upload =  new UploadController();
                 
                 var file = Request.Form.Files[0];
-                oferta.ImagemProduto = upload.UploadImg(file, "ImagensOferta");     
+                oferta.ImagemProduto = upload.UploadImg(file, "Arquivos");     
 
                 var identity = HttpContext.User.Identity as ClaimsIdentity;
 

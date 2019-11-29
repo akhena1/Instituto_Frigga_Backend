@@ -10,7 +10,6 @@ namespace Instituto_Frigga_Instituto_Frigga_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class CategoriaProdutoController : ControllerBase
     {
         CategoriaProdutoRepository repositorio = new CategoriaProdutoRepository();
@@ -54,6 +53,7 @@ namespace Instituto_Frigga_Instituto_Frigga_Backend.Controllers
         /// <param name="categoriaProduto"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<CategoriaProduto>> Post(CategoriaProduto categoriaProduto)
         {
             try
@@ -74,6 +74,7 @@ namespace Instituto_Frigga_Instituto_Frigga_Backend.Controllers
         /// <param name="categoriaProduto"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<ActionResult> Put(int id , CategoriaProduto categoriaProduto)
         {
             if (id != categoriaProduto.CategoriaProdutoId)
@@ -108,6 +109,7 @@ namespace Instituto_Frigga_Instituto_Frigga_Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult<CategoriaProduto>> Delete(int id)
         {
             var categoriaProduto = await repositorio.BuscarPorId(id);
