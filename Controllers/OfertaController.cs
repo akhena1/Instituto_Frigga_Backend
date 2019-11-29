@@ -134,7 +134,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize (Roles = "1 , 3")]
+        /* [Authorize (Roles = "1 , 3")] */
         public async Task<ActionResult<Oferta>> Delete(int id)
         {
             var oferta = await repositorio.BuscarPorId(id);

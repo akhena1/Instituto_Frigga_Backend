@@ -53,7 +53,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="produto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize (Roles = "1 , 3")]
+       /*  [Authorize (Roles = "1 , 3")] */
         public async Task<ActionResult<Produto>> Post(Produto produto)
         {
             try
@@ -74,7 +74,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="produto"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [Authorize (Roles = "1 , 3")]
+        /* [Authorize (Roles = "1 , 3")] */
         public async Task<ActionResult> Put(int id , Produto produto)
         {
             if (id != produto.ProdutoId)
