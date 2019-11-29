@@ -52,7 +52,7 @@ namespace Instituto_Frigga_Backend.Repositories
             {
                 
                 //List<Usuario> listaUsuario = new List<Usuario>();
-                var listaUsuario = await _context.Usuario.ToListAsync();
+                var listaUsuario = await _context.Usuario.Include("TipoUsuario").ToListAsync();
 
                 foreach(var item in listaUsuario)
                 {
