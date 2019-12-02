@@ -28,7 +28,7 @@ namespace Instituto_Frigga_Backend.Domains
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=N-1S-DEV-06\\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132");
+                optionsBuilder.UseSqlServer("Server=N-1S-DEV-01\\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132");
             }
         }
 
