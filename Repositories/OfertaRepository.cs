@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Instituto_Frigga_Backend.Domains;
 using Instituto_Frigga_Backend.Interfaces;
@@ -40,7 +41,7 @@ namespace Instituto_Frigga_Backend.Repositories
         {
             using(InstitutoFriggaContext _context = new InstitutoFriggaContext())
             {
-                return await _context.Oferta.Include("Produto").ToListAsync();
+                return await _context.Oferta.Include("Produto.CategoriaProduto").ToListAsync();
             }
         }
 
