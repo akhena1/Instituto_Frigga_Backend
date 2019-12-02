@@ -60,7 +60,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="oferta"></param>
         /// <returns></returns>
         [HttpPost, DisableRequestSizeLimit]
-        [Authorize (Roles = "1 , 3")]
+        /* [Authorize (Roles = "1 , 3")] */
         public async Task<ActionResult<Oferta>> Post([FromForm] Oferta oferta)
         {
         
@@ -70,14 +70,14 @@ namespace Instituto_Frigga_Backend.Controllers
                 
                 var file = Request.Form.Files[0];
                 oferta.ImagemProduto = upload.UploadImg(file, "Arquivos");     
-
+/* 
                 var identity = HttpContext.User.Identity as ClaimsIdentity;
 
                 IEnumerable<Claim> claim = identity.Claims;
 
                 var idClaim = claim.Where(x => x.Type == ClaimTypes.PrimarySid).FirstOrDefault();    
 
-                oferta.UsuarioId = Convert.ToInt32((idClaim.Value));   
+                oferta.UsuarioId = Convert.ToInt32((idClaim.Value));  */  
                             
 
                 await repositorio.Salvar(oferta);
