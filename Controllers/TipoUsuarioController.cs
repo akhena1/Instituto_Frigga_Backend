@@ -53,7 +53,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="tipoUsuario"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize (Roles = "1")]
+       // [Authorize (Roles = "1")]
         public async Task<ActionResult<TipoUsuario>> Post(TipoUsuario tipoUsuario)
         {
             try
@@ -74,7 +74,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="tipoUsuario"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [Authorize (Roles = "1")]
+       // [Authorize (Roles = "1")]
         public async Task<ActionResult> Put(int id , TipoUsuario tipoUsuario)
         {
             if (id != tipoUsuario.TipoUsuarioId)
@@ -109,7 +109,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize (Roles = "1")]
+       // [Authorize (Roles = "1")]
         public async Task<ActionResult<TipoUsuario>> Delete(int id)
         {
             var tipoUsuario = await repositorio.BuscarPorId(id);

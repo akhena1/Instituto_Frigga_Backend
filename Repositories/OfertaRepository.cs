@@ -40,7 +40,7 @@ namespace Instituto_Frigga_Backend.Repositories
         {
             using(InstitutoFriggaContext _context = new InstitutoFriggaContext())
             {
-                return await _context.Oferta.Include("Produto").Include("Usuario").ToListAsync();
+                return await _context.Oferta.Include("Produto").ToListAsync();
             }
         }
 

@@ -53,7 +53,7 @@ namespace Instituto_Frigga_Instituto_Frigga_Backend.Controllers
         /// <param name="categoriaProduto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<CategoriaProduto>> Post(CategoriaProduto categoriaProduto)
         {
             try
