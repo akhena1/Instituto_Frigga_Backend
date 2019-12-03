@@ -109,7 +109,7 @@ namespace Instituto_Frigga_Instituto_Frigga_Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize]
+       /*  [Authorize] */
         public async Task<ActionResult<CategoriaProduto>> Delete(int id)
         {
             var categoriaProduto = await repositorio.BuscarPorId(id);
