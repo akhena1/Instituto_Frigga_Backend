@@ -28,6 +28,7 @@ namespace Instituto_Frigga_Backend {
         public Startup (IConfiguration configuration) {
             Configuration = configuration;
         }
+        readonly string PermissaoEntreOrigens = "_PermissaoEntreOrigens";
 
         public IConfiguration Configuration { get; }
 
@@ -60,13 +61,13 @@ namespace Instituto_Frigga_Backend {
 
             });
             services.AddCors (options => {
-                    options.AddPolicy ("CorsPolicy",
-                        builder => builder.AllowAnyOrigin ()
-                        .AllowAnyMethod ()
-                        .AllowAnyHeader ());
-
-                    });
-            services.AddCors();
+                options.AddPolicy (PermissaoEntreOrigens,
+                    builder => builder
+                    // .AllowAnyOrigin()
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+            });
             
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             
@@ -78,10 +79,6 @@ namespace Instituto_Frigga_Backend {
             if (env.IsDevelopment ()) {
                 app.UseDeveloperExceptionPage ();
             }
-
-            app.UseSwagger ();
-
-            app.UseCors(option => option.AllowAnyOrigin());    
 
             app.UseSwagger();
 
@@ -101,11 +98,11 @@ namespace Instituto_Frigga_Backend {
 
             app.UseAuthentication ();
 
-            app.UseCors (builder => builder.AllowAnyHeader ().AllowAnyMethod ().AllowAnyOrigin ());
-
-            //app.UseHttpsRedirection ();
+            app.UseHttpsRedirection ();
 
             app.UseRouting ();
+
+            app.UseCors (PermissaoEntreOrigens);
 
             app.UseAuthorization ();
 
