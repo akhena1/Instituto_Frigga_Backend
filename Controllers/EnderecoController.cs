@@ -67,6 +67,12 @@ namespace Instituto_Frigga_Backend.Controllers
 
                 endereco.UsuarioId = Convert.ToInt32((idClaim.Value));
 
+                int cepValidator = endereco.Cep.Length;
+                if(cepValidator < 8 || cepValidator > 8 )
+                {
+                    return BadRequest(new {mensagem = "digite um CEP válido"});
+                }
+
                 await repositorio.Salvar(endereco);
                 return endereco;
             }

@@ -27,7 +27,7 @@ namespace Instituto_Frigga_Backend.Repositories
             using(InstitutoFriggaContext _context = new InstitutoFriggaContext())
             {
 
-                var usuario = await _context.Usuario.FindAsync(id);
+                var usuario = await _context.Usuario.Include("TipoUsuario").FirstOrDefaultAsync(i => i.UsuarioId == id);
                      
                 usuario.Email = null;
                 usuario.Senha = null;

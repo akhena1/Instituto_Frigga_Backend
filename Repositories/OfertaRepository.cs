@@ -23,7 +23,7 @@ namespace Instituto_Frigga_Backend.Repositories
         {
             using(InstitutoFriggaContext _context = new InstitutoFriggaContext())
             {
-                return await _context.Oferta.FindAsync(id);
+                return await _context.Oferta.Include("Produto.CategoriaProduto").FirstOrDefaultAsync(i => i.OfertaId == id);
             }
         }
 
