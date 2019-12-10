@@ -23,7 +23,7 @@ namespace Instituto_Frigga_Backend.Repositories
         public void Conexao()
         {
             // Define os dados de conexão com meu servidor SQL
-            con.ConnectionString = @"Server=N-1S-DEV-06\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132";        
+            con.ConnectionString = @"Server=DESKTOP-2P4HA47\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132";        
         }
 
         public void Desconectar()

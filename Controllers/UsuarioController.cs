@@ -19,7 +19,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        /* [Authorize] */
+        [Authorize]
         public async Task<ActionResult<List<Usuario>>> Get()
         {
             var usuario = await repositorio.Listar();
@@ -37,7 +37,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        /* [Authorize (Roles = "1")] */
+        [Authorize (Roles = "1")]
         public async Task<ActionResult<Usuario>> Get(int id)
         {
             var usuario = await repositorio.BuscarPorId(id);

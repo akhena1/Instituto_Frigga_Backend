@@ -22,7 +22,7 @@ namespace Instituto_Frigga_Backend.Repositories
         {
             using(InstitutoFriggaContext _context = new InstitutoFriggaContext())
             {
-                return await _context.Receita.FindAsync(id);
+                return await _context.Receita.Include("CategoriaReceita").Include("Usuario").FirstOrDefaultAsync(u => u.ReceitaId == id);
             }
         }
 

@@ -68,11 +68,11 @@ namespace Instituto_Frigga_Backend.Controllers
 
                 receita.ImagemReceita = upload.UploadImg(file, "Arquivos");
 
-                /* var identity = HttpContext.User.Identity as ClaimsIdentity;
+                 var identity = HttpContext.User.Identity as ClaimsIdentity;
                 IEnumerable<Claim> claims = identity.Claims;
                 var idClaim = claims.Where(x => x.Type == ClaimTypes.PrimarySid).FirstOrDefault();
 
-                receita.UsuarioId = Convert.ToInt32((idClaim.Value)); */
+                receita.UsuarioId = Convert.ToInt32((idClaim.Value)); 
 
                 
                 await repositorio.Salvar(receita);
@@ -127,7 +127,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        /* [Authorize] */
+         [Authorize] 
         public async Task<ActionResult<Receita>> Delete(int id)
         {
             var receita = await repositorio.BuscarPorId(id);
