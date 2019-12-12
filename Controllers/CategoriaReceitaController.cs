@@ -10,7 +10,7 @@ namespace Instituto_Frigga_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-     [Authorize]
+     
     public class CategoriaReceitaController : ControllerBase
     {
         CategoriaReceitaRepository repositorio = new CategoriaReceitaRepository();
@@ -54,6 +54,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="categoriaReceita"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<CategoriaReceita>> Post(CategoriaReceita categoriaReceita)
         {
             try
@@ -74,6 +75,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="categoriaReceita"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<ActionResult> Put(int id , CategoriaReceita categoriaReceita)
         {
             if (id != categoriaReceita.CategoriaReceitaId)
@@ -108,6 +110,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<ActionResult<CategoriaReceita>> Delete(int id)
         {
             var categoriaReceita = await repositorio.BuscarPorId(id);

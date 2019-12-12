@@ -63,7 +63,6 @@ namespace Instituto_Frigga_Backend {
             services.AddCors (options => {
                 options.AddPolicy (PermissaoEntreOrigens,
                     builder => builder
-                    // .AllowAnyOrigin()
                     .AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader());
@@ -98,7 +97,7 @@ namespace Instituto_Frigga_Backend {
 
             app.UseAuthentication ();
 
-             app.UseHttpsRedirection (); 
+            // app.UseHttpsRedirection (); 
 
             app.UseRouting ();
 
