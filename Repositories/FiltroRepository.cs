@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Threading.Tasks;
 using Instituto_Frigga_Backend.Domains;
 using Instituto_Frigga_Backend.Interfaces;
@@ -23,7 +24,7 @@ namespace Instituto_Frigga_Backend.Repositories
         public void Conexao()
         {
             // Define os dados de conexão com meu servidor SQL
-            con.ConnectionString = @"Server=DESKTOP-2P4HA47\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132";        
+            con.ConnectionString = @"Server=.\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132";        
         }
 
         public void Desconectar()
@@ -75,13 +76,23 @@ namespace Instituto_Frigga_Backend.Repositories
                             ImagemProduto = dados.GetString(3),
                             Quantidade    = dados.GetInt32(4),
                             UsuarioId     = dados.GetInt32(5),
-                            ProdutoId     = dados.GetInt32(6)
+                            ProdutoId     = dados.GetInt32(6),
+                            Usuario = new Usuario() 
+                            {
+                                Nome = dados.GetString(7),
+                            },
+                            Produto = new Produto()
+                            {
+                                Tipo = dados.GetString(8),
+                            }
+                                                   
                         }
                     );
                 } 
 
                 // Fecha a conexão com o banco
                 Desconectar();
+                
 
                 // Retorna a lista
                 return oferta;
