@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\Backend.csproj": {}
+    "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\Backend.csproj": {
+    "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\Backend.csproj",
+        "projectPath": "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj",
         "packagesPath": "C:\\Users\\Akhena\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\obj\\",
+        "outputPath": "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Akhena\\AppData\\Roaming\\NuGet\\NuGet.Config",

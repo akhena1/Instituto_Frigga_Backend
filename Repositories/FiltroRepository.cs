@@ -50,7 +50,7 @@ namespace Instituto_Frigga_Backend.Repositories
                 cmd.Connection = Conectar();
 
                 // Comando que será executado no banco
-                cmd.CommandText = "SELECT Oferta.*,Produto.Tipo,Categoria_produto.Tipo_produto FROM Oferta INNER JOIN Produto ON Produto.Produto_id = Oferta.Produto_id INNER JOIN Categoria_produto ON Categoria_produto.Categoria_produto_id = Produto.Categoria_produto_id WHERE Produto.Categoria_produto_id = @param1";
+                cmd.CommandText = "SELECT Oferta.*,Produto.Tipo,Categoria_produto.Tipo_produto , Usuario.Nome, Usuario.Telefone FROM Oferta INNER JOIN Usuario ON Usuario.Usuario_id = Oferta.Usuario_id INNER JOIN Produto ON Produto.Produto_id = Oferta.Produto_id  INNER JOIN Categoria_produto ON Categoria_produto.Categoria_produto_id = Produto.Categoria_produto_id WHERE Produto.Categoria_produto_id = @param1";
 
                 // Passamos o nome da coluna em parâmetro por questões de segurança
                 cmd.Parameters.AddWithValue("@param1" , id);
@@ -77,13 +77,20 @@ namespace Instituto_Frigga_Backend.Repositories
                             Quantidade    = dados.GetInt32(4),
                             UsuarioId     = dados.GetInt32(5),
                             ProdutoId     = dados.GetInt32(6),
-                            Usuario = new Usuario() 
-                            {
-                                Nome = dados.GetString(7),
-                            },
                             Produto = new Produto()
                             {
-                                Tipo = dados.GetString(8),
+                                
+                                Tipo = dados.GetString(7),
+                                CategoriaProduto = new CategoriaProduto()
+                                {
+                                    TipoProduto = dados.GetString(8)
+                                }
+                                
+                            },
+                            Usuario = new Usuario()
+                            {
+                                Nome = dados.GetString(9),
+                                Telefone = dados.GetString(10)
                             }
                                                    
                         }
