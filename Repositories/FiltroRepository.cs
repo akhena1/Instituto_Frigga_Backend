@@ -152,7 +152,11 @@ namespace Instituto_Frigga_Backend.Repositories
                             ModoDePreparo      = dados.GetString(3),
                             ImagemReceita      = dados.GetString(4),
                             CategoriaReceitaId = dados.GetInt32(5),
-                            UsuarioId          = dados.GetInt32(6)
+                            UsuarioId          = dados.GetInt32(6),
+                            CategoriaReceita = new CategoriaReceita()
+                            {
+                                TipoReceita = dados.GetString(7),
+                            }
                         }
                     );
                 } 
