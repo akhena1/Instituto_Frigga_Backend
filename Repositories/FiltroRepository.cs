@@ -156,6 +156,10 @@ namespace Instituto_Frigga_Backend.Repositories
                             CategoriaReceita = new CategoriaReceita()
                             {
                                 TipoReceita = dados.GetString(7),
+                            },
+                            Usuario = new Usuario()
+                            {
+                                Nome = dados.GetString(8),
                             }
                         }
                     );
