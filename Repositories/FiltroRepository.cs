@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Threading.Tasks;
 using Instituto_Frigga_Backend.Domains;
 using Instituto_Frigga_Backend.Interfaces;
@@ -23,7 +24,7 @@ namespace Instituto_Frigga_Backend.Repositories
         public void Conexao()
         {
             // Define os dados de conexão com meu servidor SQL
-            con.ConnectionString = @"Server=DESKTOP-2P4HA47\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132";        
+            con.ConnectionString = @"Server=.\SQLEXPRESS; Database=InstitutoFrigga; User Id=sa; Password=132";        
         }
 
         public void Desconectar()
@@ -49,7 +50,7 @@ namespace Instituto_Frigga_Backend.Repositories
                 cmd.Connection = Conectar();
 
                 // Comando que será executado no banco
-                cmd.CommandText = "SELECT Oferta.*,Produto.Tipo,Categoria_produto.Tipo_produto FROM Oferta INNER JOIN Produto ON Produto.Produto_id = Oferta.Produto_id INNER JOIN Categoria_produto ON Categoria_produto.Categoria_produto_id = Produto.Categoria_produto_id WHERE Produto.Categoria_produto_id = @param1";
+                cmd.CommandText = "SELECT Oferta.*,Produto.Tipo,Categoria_produto.Tipo_produto , Usuario.Nome, Usuario.Telefone FROM Oferta INNER JOIN Usuario ON Usuario.Usuario_id = Oferta.Usuario_id INNER JOIN Produto ON Produto.Produto_id = Oferta.Produto_id  INNER JOIN Categoria_produto ON Categoria_produto.Categoria_produto_id = Produto.Categoria_produto_id WHERE Produto.Categoria_produto_id = @param1";
 
                 // Passamos o nome da coluna em parâmetro por questões de segurança
                 cmd.Parameters.AddWithValue("@param1" , id);
@@ -75,13 +76,30 @@ namespace Instituto_Frigga_Backend.Repositories
                             ImagemProduto = dados.GetString(3),
                             Quantidade    = dados.GetInt32(4),
                             UsuarioId     = dados.GetInt32(5),
-                            ProdutoId     = dados.GetInt32(6)
+                            ProdutoId     = dados.GetInt32(6),
+                            Produto = new Produto()
+                            {
+                                
+                                Tipo = dados.GetString(7),
+                                CategoriaProduto = new CategoriaProduto()
+                                {
+                                    TipoProduto = dados.GetString(8)
+                                }
+                                
+                            },
+                            Usuario = new Usuario()
+                            {
+                                Nome = dados.GetString(9),
+                                Telefone = dados.GetString(10)
+                            }
+                                                   
                         }
                     );
                 } 
 
                 // Fecha a conexão com o banco
                 Desconectar();
+                
 
                 // Retorna a lista
                 return oferta;

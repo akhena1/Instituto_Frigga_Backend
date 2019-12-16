@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "FilePath": "c:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend.csproj",
+=======
+  "FilePath": "c:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj",
+>>>>>>> 378dae8a4758baa0cb97841db19f7bc07bf66174
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",

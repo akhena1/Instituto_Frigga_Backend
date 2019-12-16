@@ -6561,11 +6561,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend.csproj",
       "projectName": "Backend",
       "projectPath": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend.csproj",
       "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj",
+      "projectName": "Backend",
+      "projectPath": "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj",
+      "packagesPath": "C:\\Users\\Akhena\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\obj\\",
+>>>>>>> 378dae8a4758baa0cb97841db19f7bc07bf66174
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

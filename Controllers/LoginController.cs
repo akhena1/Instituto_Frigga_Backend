@@ -45,6 +45,7 @@ namespace backend.Controllers
                 new Claim(ClaimTypes.Role, userInfo.TipoUsuarioId.ToString()),
                 new Claim("Role", userInfo.TipoUsuarioId.ToString()),
                 new Claim("Id", userInfo.UsuarioId.ToString()),
+                new Claim("Nome", userInfo.Nome.ToString()),
                 new Claim(ClaimTypes.PrimarySid, userInfo.UsuarioId.ToString()),
             };
             

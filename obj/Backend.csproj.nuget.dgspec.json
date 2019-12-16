@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend.csproj",
         "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\obj\\",
+=======
+    "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj",
+        "projectName": "Backend",
+        "projectPath": "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj",
+        "packagesPath": "C:\\Users\\Akhena\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\obj\\",
+>>>>>>> 378dae8a4758baa0cb97841db19f7bc07bf66174
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
