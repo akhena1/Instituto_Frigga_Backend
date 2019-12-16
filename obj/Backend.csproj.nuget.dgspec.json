@@ -1,21 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\Backend.csproj": {}
+    "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\Backend.csproj": {
+    "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\Backend.csproj",
-        "packagesPath": "C:\\Users\\Akhena\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\obj\\",
+        "projectPath": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\Backend.csproj",
+        "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\fic\\Desktop\\Instituto_Frigga_Backend\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Akhena\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\fic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
@@ -83,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
