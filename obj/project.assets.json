@@ -6613,11 +6613,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj",
       "projectName": "Backend",
       "projectPath": "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\Backend.csproj",
       "packagesPath": "C:\\Users\\Akhena\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Akhena\\Desktop\\InstitutoFrigga\\Instituto_Frigga_Backend\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\Backend.csproj",
+      "projectName": "Backend",
+      "projectPath": "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\Backend.csproj",
+      "packagesPath": "C:\\Users\\Akhena\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Akhena\\Desktop\\Frigga\\Instituto_Frigga_Backend\\obj\\",
+>>>>>>> parent of 1ca3e4a... atualizado
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Akhena\\AppData\\Roaming\\NuGet\\NuGet.Config",
