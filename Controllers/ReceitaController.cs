@@ -72,7 +72,7 @@ namespace Instituto_Frigga_Backend.Controllers
                 IEnumerable<Claim> claims = identity.Claims;
                 var idClaim = claims.Where(x => x.Type == ClaimTypes.PrimarySid).FirstOrDefault();
 
-                receita.UsuarioId = Convert.ToInt32((idClaim.Value)); 
+                // receita.UsuarioId = Convert.ToInt32((idClaim.Value)); 
 
                 
                 await repositorio.Salvar(receita);
