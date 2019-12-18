@@ -58,7 +58,7 @@ namespace Instituto_Frigga_Backend.Controllers
         /// <param name="receita"></param>
         /// <returns></returns>
         [HttpPost , DisableRequestSizeLimit]
-        /* [Authorize] */
+         [Authorize]
         public async Task<ActionResult<Receita>> Post([FromForm]Receita receita)
         {
             try
